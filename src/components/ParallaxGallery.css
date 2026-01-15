@@ -1,0 +1,69 @@
+/* Parallax Gallery Styles */
+.parallax-gallery-wrapper {
+    width: 100%;
+    background: var(--bg-primary);
+}
+
+.parallax-gallery-container {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    height: 175vh;
+    gap: 2vw;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    padding: 2vw;
+}
+
+.parallax-column {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 25%;
+    min-width: 250px;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.parallax-column:nth-child(1) {
+    top: -45%;
+}
+
+.parallax-column:nth-child(2) {
+    top: -95%;
+}
+
+.parallax-column:nth-child(3) {
+    top: -45%;
+}
+
+.parallax-column:nth-child(4) {
+    top: -75%;
+}
+
+.parallax-image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.parallax-image {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .parallax-gallery-container {
+        gap: 1vw;
+        padding: 1vw;
+    }
+
+    .parallax-column {
+        min-width: 150px;
+        gap: 1vw;
+    }
+}
