@@ -130,7 +130,7 @@
 
 .feature-title {
     font-size: var(--text-lg);
-    font-weight: 700;
+    font-weight: 300;
     color: var(--text-primary);
     margin-bottom: var(--space-3);
 }
@@ -177,7 +177,7 @@
 
 .process-title {
     font-size: var(--text-xl);
-    font-weight: 700;
+    font-weight: 300;
     color: var(--text-primary);
     margin-bottom: var(--space-3);
 }

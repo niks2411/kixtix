@@ -33,7 +33,7 @@
     text-transform: uppercase;
     text-decoration: none;
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(2rem, 5vh, 4rem);
     letter-spacing: 0.05em;
     transition: color 0.3s ease;
@@ -70,7 +70,7 @@
     white-space: nowrap;
     text-transform: uppercase;
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(2rem, 5vh, 4rem);
     line-height: 1;
     padding: 0 1vw;

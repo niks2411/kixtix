@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent }
 import FlowingMenu from '../components/FlowingMenu';
 import ParallaxGallery from '../components/ParallaxGallery';
 import { Skiper39 } from '@/components/ui/skiper-ui/skiper39';
+import { Skiper58, TextRoll } from '@/components/ui/skiper-ui/skiper58';
+import { OrbitingCircles } from '@/components/ui/OrbitingCircles';
 import './Home.css';
 
 const Home = () => {
@@ -120,38 +122,38 @@ const Home = () => {
 
     const services = [
         {
-            icon: '🎬',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" /></svg>,
             title: 'YouTube Promotion',
             description: 'Channel management, SEO optimization, and strategic promotion to get your music videos in front of millions.',
             path: '/video-promotions',
             featured: true,
         },
         {
-            icon: '📱',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>,
             title: 'Social Media',
             description: 'Facebook & Instagram page management. Build your fanbase where they already spend their time.',
             path: '/services/digital-marketing',
         },
         {
-            icon: '🎵',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="5.5" cy="17.5" r="2.5" /><circle cx="18.5" cy="17.5" r="2.5" /><circle cx="12" cy="12" r="2.5" /><path d="M8 17.5v-4.5a3 3 0 0 1 3-3h2a3 3 0 0 1 3 3v4.5" /><path d="M5.5 15V8a6.5 6.5 0 1 1 13 0v7" /></svg>,
             title: 'Music Distribution',
             description: 'Saavn, Gaana, iTunes, Spotify, Amazon Music — get your tracks on every major platform.',
             path: '/services/music-distribution',
         },
         {
-            icon: '💬',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>,
             title: 'WhatsApp Campaigns',
             description: 'Direct reach to 800M+ users. Text, images, videos — way more powerful than traditional SMS.',
             path: '/services/whatsapp-marketing',
         },
         {
-            icon: '📢',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" /></svg>,
             title: 'Bulk SMS',
             description: '50 Crore+ database. DND & Non-DND. Real-time delivery. Your message, their phone.',
             path: '/services/bulk-sms',
         },
         {
-            icon: '📲',
+            icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg>,
             title: 'App Marketing',
             description: 'CPI campaigns, ASO, ratings & reviews. Make your app visible in a sea of millions.',
             path: '/services/app-marketing',
@@ -197,11 +199,11 @@ const Home = () => {
                             <span>Music Promotion Agency</span>
                         </div>
 
-                        <h1 className="hero-main-title">
-                            YOUR MUSIC<br />
-                            <span className="accent">DESERVES</span><br />
-                            MILLIONS
-                        </h1>
+                        <div className="hero-main-title">
+                            <TextRoll className="hero-title-line">Your Music</TextRoll>
+                            <TextRoll center className="hero-title-line accent">Deserves</TextRoll>
+                            <TextRoll className="hero-title-line">Millions</TextRoll>
+                        </div>
 
                         <p className="hero-desc">
                             We don't just promote music — we build audiences.<br />
@@ -377,7 +379,113 @@ const Home = () => {
             {/* Parallax Gallery Section */}
             <ParallaxGallery />
 
-            {/* What We Do */}
+            {/* Aesthetic Showcase Section */}
+            <section className="aesthetic-section">
+                <div className="aesthetic-container">
+                    <motion.div
+                        className="aesthetic-images"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="floating-image-wrapper">
+                            {/* Decorative outline circles */}
+                            <svg className="decorative-circle circle-1" viewBox="0 0 200 200" fill="none">
+                                <circle cx="100" cy="100" r="95" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="5,5" />
+                            </svg>
+                            <svg className="decorative-circle circle-2" viewBox="0 0 300 300" fill="none">
+                                <path d="M 30 150 Q 30 30 150 30 Q 270 30 270 150 Q 270 270 150 270" stroke="rgba(196,255,60,0.2)" strokeWidth="1" fill="none" />
+                            </svg>
+
+                            <motion.img
+                                src="/images/gallery/1.jpg"
+                                alt="Artist Performance"
+                                className="floating-image main-image"
+                                initial={{ y: 0 }}
+                                animate={{ y: [-10, 10, -10] }}
+                                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            />
+                            <motion.img
+                                src="/images/gallery/4.jpg"
+                                alt="Live Concert"
+                                className="floating-image secondary-image"
+                                initial={{ y: 0 }}
+                                animate={{ y: [10, -10, 10] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                            />
+                            <div className="image-glow"></div>
+                            <div className="decorative-dots">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        className="aesthetic-content"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <span className="aesthetic-eyebrow">Why Artists Trust Us</span>
+                        <h2 className="aesthetic-title">
+                            The <span className="accent-underline">Smart Way</span><br />
+                            To Grow Your<br />
+                            Music Career
+                        </h2>
+
+                        <div className="aesthetic-features">
+                            <div className="aesthetic-feature">
+                                <div className="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                                    </svg>
+                                </div>
+                                <div className="feature-text">
+                                    <h4>Real Growth</h4>
+                                    <p>Organic audience building across all major platforms</p>
+                                </div>
+                            </div>
+                            <div className="aesthetic-feature">
+                                <div className="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <circle cx="12" cy="12" r="6" />
+                                        <circle cx="12" cy="12" r="2" fill="currentColor" />
+                                    </svg>
+                                </div>
+                                <div className="feature-text">
+                                    <h4>Targeted Reach</h4>
+                                    <p>Your music reaches the right ears at the right time</p>
+                                </div>
+                            </div>
+                            <div className="aesthetic-feature">
+                                <div className="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                </div>
+                                <div className="feature-text">
+                                    <h4>100% Confidential</h4>
+                                    <p>Your strategies stay private, your success speaks</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <Link to="/contact" className="aesthetic-cta">
+                            Start Growing <span>→</span>
+                        </Link>
+                    </motion.div>
+                </div>
+
+                <div className="aesthetic-bg-circle circle-1"></div>
+                <div className="aesthetic-bg-circle circle-2"></div>
+            </section>
+
+            {/* What We Do - COMMENTED OUT
             <section className="services-section section">
                 <div className="container">
                     <motion.div
@@ -427,16 +535,18 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+            */}
 
             {/* Why Us Section */}
             <section className="why-section section">
                 <div className="container">
-                    <div className="why-grid">
+                    <div className="why-modern-layout">
                         <motion.div
                             className="why-content"
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
                         >
                             <span className="badge">Why Kixtix?</span>
                             <h2 className="why-title">
@@ -451,46 +561,93 @@ const Home = () => {
                                 We know exactly where to place your content, when to push it,
                                 and how to make the algorithm work for you — not against you.
                             </p>
-                            <ul className="why-list">
-                                <li><span className="check">✓</span> Global Reach</li>
-                                <li><span className="check">✓</span> Analytical Approach</li>
-                                <li><span className="check">✓</span> Confidential Agreements</li>
-                                <li><span className="check">✓</span> Best Results, Economical Cost</li>
-                            </ul>
                         </motion.div>
 
                         <motion.div
-                            className="why-visual"
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            className="why-orbital"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
+                            transition={{ duration: 1 }}
                         >
-                            <div className="platforms-showcase">
-                                <div className="platform-card">
-                                    <span className="platform-icon">▶️</span>
-                                    <span className="platform-name">YouTube</span>
-                                </div>
-                                <div className="platform-card">
-                                    <span className="platform-icon">📸</span>
-                                    <span className="platform-name">Instagram</span>
-                                </div>
-                                <div className="platform-card">
-                                    <span className="platform-icon">📘</span>
-                                    <span className="platform-name">Facebook</span>
-                                </div>
-                                <div className="platform-card">
-                                    <span className="platform-icon">🎵</span>
-                                    <span className="platform-name">Spotify</span>
-                                </div>
-                                <div className="platform-card">
-                                    <span className="platform-icon">🎧</span>
-                                    <span className="platform-name">Gaana</span>
-                                </div>
-                                <div className="platform-card">
-                                    <span className="platform-icon">🎶</span>
-                                    <span className="platform-name">Saavn</span>
+                            <div className="relative flex h-[350px] w-[350px] items-center justify-center">
+                                {/* Ring paths */}
+                                <svg className="pointer-events-none absolute inset-0 size-full">
+                                    <circle cx="50%" cy="50%" r={140} fill="none" stroke="rgba(196,255,60,0.15)" strokeWidth="1" />
+                                    <circle cx="50%" cy="50%" r={100} fill="none" stroke="rgba(196,255,60,0.1)" strokeWidth="1" />
+                                    <circle cx="50%" cy="50%" r={60} fill="none" stroke="rgba(196,255,60,0.08)" strokeWidth="1" />
+                                </svg>
+
+                                {/* Outer ring - 2 icons, 180 degrees apart */}
+                                <OrbitingCircles radius={140} duration={25} startAngle={0}>
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="YouTube" style={{ width: 32, height: 32 }} />
+                                </OrbitingCircles>
+                                <OrbitingCircles radius={140} duration={25} startAngle={180}>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style={{ width: 32, height: 32, borderRadius: 6 }} />
+                                </OrbitingCircles>
+
+                                {/* Middle ring - 2 icons, 180 degrees apart, reverse */}
+                                <OrbitingCircles radius={100} duration={20} startAngle={0} reverse>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify" style={{ width: 28, height: 28 }} />
+                                </OrbitingCircles>
+                                <OrbitingCircles radius={100} duration={20} startAngle={180} reverse>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" style={{ width: 28, height: 28 }} />
+                                </OrbitingCircles>
+
+                                {/* Inner ring - 2 icons, 180 degrees apart */}
+                                <OrbitingCircles radius={60} duration={15} startAngle={0}>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style={{ width: 24, height: 24 }} />
+                                </OrbitingCircles>
+                                <OrbitingCircles radius={60} duration={15} startAngle={180}>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter" style={{ width: 24, height: 24 }} />
+                                </OrbitingCircles>
+
+                                {/* Center */}
+                                <div className="absolute flex flex-col items-center justify-center text-center">
+                                    <span className="text-4xl font-light text-white">6+</span>
+                                    <span className="text-xs text-white/50 uppercase tracking-widest">Platforms</span>
                                 </div>
                             </div>
+                        </motion.div>
+
+                        <motion.div
+                            className="why-features"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                        >
+                            {[
+                                {
+                                    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>,
+                                    text: "Global Reach"
+                                },
+                                {
+                                    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 3v18h18" /><path d="M18 17V9" /><path d="M13 17V5" /><path d="M8 17v-3" /></svg>,
+                                    text: "Analytical Approach"
+                                },
+                                {
+                                    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>,
+                                    text: "Confidential Agreements"
+                                },
+                                {
+                                    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>,
+                                    text: "Best Results, Economical Cost"
+                                }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={item.text}
+                                    className="feature-pill"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    whileHover={{ scale: 1.02, x: 5 }}
+                                >
+                                    <span className="pill-icon">{item.icon}</span>
+                                    <span className="pill-text">{item.text}</span>
+                                </motion.div>
+                            ))}
                         </motion.div>
                     </div>
                 </div>

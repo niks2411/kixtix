@@ -259,34 +259,30 @@ const CrowdCanvas = ({
 
 const Skiper39 = () => {
   return (
-    <div className="relative h-[70vh] w-full" style={{ background: '#050A30' }}>
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10 text-center w-full px-4">
+    <div className="relative min-h-[80vh] w-full py-20" style={{ background: '#050A30' }}>
+      <div className="relative z-10 text-center w-full px-4 pt-16 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-
-          <span className="text-[#c4ff3c] font-medium tracking-[0.3em] text-[10px] sm:text-xs uppercase mb-4 block opacity-80">
-            Join The Community
-          </span>
           <h2
-            className="text-white text-5xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-6 drop-shadow-2xl"
+            className="text-white text-4xl sm:text-5xl md:text-7xl font-light uppercase tracking-tight leading-tight mb-8 drop-shadow-2xl"
             style={{ fontFamily: "'Bebas Neue', display" }}
           >
             Ready to Join <span className="text-[#c4ff3c]" style={{ textShadow: '0 0 20px rgba(196, 255, 60, 0.4)' }}>KIXTIX?</span>
           </h2>
-          <p className="text-white/40 text-xs sm:text-sm md:text-base max-w-lg mx-auto font-light leading-relaxed tracking-wide">
+          <p className="text-white/50 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed tracking-wide mb-10">
             Be part of the movement that's redefining music promotion.
             Connect with artists and grow your influence today.
           </p>
-          <div className="mt-12 relative flex justify-center">
-            <div className="h-20 w-px bg-gradient-to-b from-[#c4ff3c] to-transparent"></div>
+          <div className="relative flex justify-center mb-8">
+            <div className="h-16 w-px bg-gradient-to-b from-[#c4ff3c] to-transparent"></div>
           </div>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 h-full w-full">
+      <div className="absolute bottom-0 left-0 right-0 h-[60%] w-full">
         <CrowdCanvas src="/images/peeps/all-peeps.png" rows={30} cols={1} />
       </div>
     </div>

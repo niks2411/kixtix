@@ -21,7 +21,7 @@
 .wave-title {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
+    font-weight: 300;
     color: var(--text-primary);
     margin-bottom: 1rem;
     text-transform: uppercase;

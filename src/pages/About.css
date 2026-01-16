@@ -183,7 +183,7 @@
 
 .value-title {
     font-size: var(--text-lg);
-    font-weight: 700;
+    font-weight: 300;
     color: var(--text-primary);
     margin-bottom: var(--space-2);
 }
