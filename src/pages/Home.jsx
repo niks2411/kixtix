@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
 import FlowingMenu from '../components/FlowingMenu';
 import ParallaxGallery from '../components/ParallaxGallery';
+import { Skiper39 } from '@/components/ui/skiper-ui/skiper39';
 import './Home.css';
 
 const Home = () => {
@@ -106,12 +107,15 @@ const Home = () => {
     ];
 
 
-    // Real stats based on the company info
-    const stats = [
-        { number: '1B+', label: 'Monthly Users on Platforms' },
-        { number: '24/7', label: 'Online Support' },
-        { number: '100%', label: 'Confidential' },
-        { number: '∞', label: 'Growth Potential' },
+    const marqueeImages = [
+        "/images/1.png",
+        "/images/2.png",
+        "/images/3.png",
+        "/images/4.png",
+        "/images/5.png",
+        "/images/7.png",
+        "/images/8.png",
+        "/images/9.png",
     ];
 
     const services = [
@@ -213,7 +217,7 @@ const Home = () => {
                             </Link>
                         </div>
 
-                        <p className="scroll-cue">↓ Scroll to see the magic</p>
+                        <p className="scroll-cue"></p>
                     </motion.div>
 
                     {/* Right Side - Smooth Line (Skiper19 style) */}
@@ -329,12 +333,7 @@ const Home = () => {
                                             </div>
                                         </div>
 
-                                        {/* Optional Close Button to go back to Hero */}
-                                        <button
-                                            className="close-perspective-btn"
-                                            onClick={() => setIsThreeDActive(false)}
-                                            style={{ top: '10px', right: '10px', width: '30px', height: '30px', fontSize: '1.2rem' }}
-                                        >×</button>
+
                                     </motion.div>
 
                                     {/* Right Panel */}
@@ -357,26 +356,26 @@ const Home = () => {
             </section>
 
 
-            {/* Stats Bar */}
-            <section className="stats-bar">
-                <div className="container">
-                    <div className="stats-grid">
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={stat.label}
-                                className="stat-item"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                            >
-                                <span className="stat-number">{stat.number}</span>
-                                <span className="stat-label">{stat.label}</span>
-                            </motion.div>
+            {/* Client/Partner Marquee */}
+            <section className="marquee-section">
+                <div className="marquee-wrapper">
+                    <div className="marquee-content">
+                        {/* Triple the images for seamless infinite scroll */}
+                        {marqueeImages.map((src, index) => (
+                            <img key={`set1-${index}`} src={src} alt="Platform" className="marquee-logo" />
+                        ))}
+                        {marqueeImages.map((src, index) => (
+                            <img key={`set2-${index}`} src={src} alt="Platform" className="marquee-logo" />
+                        ))}
+                        {marqueeImages.map((src, index) => (
+                            <img key={`set3-${index}`} src={src} alt="Platform" className="marquee-logo" />
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* Parallax Gallery Section */}
+            <ParallaxGallery />
 
             {/* What We Do */}
             <section className="services-section section">
@@ -518,10 +517,10 @@ const Home = () => {
                         items={menuItems}
                         speed={12}
                         textColor="#fff"
-                        bgColor="rgb(18, 45, 28)"
+                        bgColor="#050A30"
                         marqueeBgColor="#c4ff3c"
-                        marqueeTextColor="rgb(12, 33, 20)"
-                        borderColor="rgba(196, 255, 60, 0.15)"
+                        marqueeTextColor="#050A30"
+                        borderColor="rgba(0, 234, 255, 0.2)"
                     />
                 </div>
             </section>
@@ -608,8 +607,8 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Parallax Gallery Section */}
-            <ParallaxGallery />
+            {/* Crowd Canvas Animation Section */}
+            <Skiper39 />
         </div>
     );
 };

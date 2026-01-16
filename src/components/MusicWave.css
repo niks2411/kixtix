@@ -1,0 +1,172 @@
+/* Music Wave Section */
+.music-wave-section {
+    position: relative;
+    min-height: 60vh;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #0a1628 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4rem 2rem;
+}
+
+.music-wave-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.wave-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.wave-title .accent {
+    background: linear-gradient(135deg, #c4ff3c 0%, #00eaff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.wave-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Animated Wave Bars */
+.wave-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    height: 150px;
+    position: relative;
+    z-index: 5;
+}
+
+.wave-bar {
+    width: 8px;
+    background: linear-gradient(180deg, #c4ff3c 0%, #00eaff 100%);
+    border-radius: 4px;
+    min-height: 20px;
+}
+
+/* Floating Notes */
+.floating-notes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.floating-note {
+    position: absolute;
+    bottom: 20%;
+    font-size: 2rem;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 10px rgba(196, 255, 60, 0.5));
+}
+
+/* Gradient Orbs */
+.gradient-orbs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: #c4ff3c;
+    top: -100px;
+    left: -100px;
+    animation: float1 8s ease-in-out infinite;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: #00eaff;
+    bottom: -50px;
+    right: -50px;
+    animation: float2 10s ease-in-out infinite;
+}
+
+.orb-3 {
+    width: 200px;
+    height: 200px;
+    background: #8b5cf6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float3 6s ease-in-out infinite;
+}
+
+@keyframes float1 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(50px, 50px);
+    }
+}
+
+@keyframes float2 {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-30px, -30px);
+    }
+}
+
+@keyframes float3 {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .wave-bars {
+        gap: 5px;
+        height: 100px;
+    }
+
+    .wave-bar {
+        width: 5px;
+    }
+
+    .floating-note {
+        font-size: 1.5rem;
+    }
+}

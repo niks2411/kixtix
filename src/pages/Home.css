@@ -342,9 +342,9 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    pointer-events: none;
+    pointer-events: auto;
     z-index: 20;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
@@ -427,38 +427,65 @@
 }
 
 /* ========================================
-   Stats Bar
+   Marquee Section - Infinite Logo Scroll
    ======================================== */
-.stats-bar {
+.marquee-section {
     background: var(--bg-secondary);
-    padding: var(--space-12) 0;
+    padding: 20px 0;
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
+    overflow: hidden;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-8);
+.marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
 }
 
-.stat-item {
-    text-align: center;
+.marquee-content {
+    display: flex;
+    gap: 50px;
+    width: fit-content;
+    animation: scroll 25s linear infinite;
 }
 
-.stat-item .stat-number {
-    display: block;
-    font-family: var(--font-display);
-    font-size: var(--text-5xl);
-    color: var(--accent-primary);
-    margin-bottom: var(--space-2);
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-33.333%);
+    }
 }
 
-.stat-item .stat-label {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+.marquee-logo {
+    height: 40px;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.marquee-logo:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.marquee-section:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    .marquee-content {
+        gap: 30px;
+    }
+
+    .marquee-logo {
+        height: 30px;
+    }
 }
 
 /* ========================================

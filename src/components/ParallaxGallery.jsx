@@ -4,18 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import './ParallaxGallery.css';
 
 const images = [
-    "/images/gallery/img1.jpg",
-    "/images/gallery/img2.jpg",
-    "/images/gallery/img3.jpg",
-    "/images/gallery/img4.jpg",
-    "/images/gallery/img5.jpg",
-    "/images/gallery/img6.jpg",
-    "/images/gallery/img7.jpg",
-    "/images/gallery/img8.jpg",
-    "/images/gallery/img9.jpg",
-    "/images/gallery/img10.jpg",
-    "/images/gallery/img11.jpg",
-    "/images/gallery/img12.jpg",
+    "/images/gallery/1.jpg",
+    "/images/gallery/2.jpg",
+    "/images/gallery/3.jpg",
+    "/images/gallery/4.jpg",
+    "/images/gallery/5.jpg",
+    "/images/gallery/6.jpg",
+    "/images/gallery/7.jpg",
+    "/images/gallery/8.jpg",
+    "/images/gallery/9.jpg",
+    "/images/gallery/10.jpg",
+    "/images/gallery/11.jpg",
+    "/images/gallery/12.jpg",
 ];
 
 const ParallaxGallery = () => {
