@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from 'framer-motion';
 import FlowingMenu from '../components/FlowingMenu';
@@ -65,6 +65,23 @@ const Home = () => {
             setIsThreeDActive(false);
         }
     });
+
+    // Check initial scroll position on page load to fix first-scroll issue
+    useEffect(() => {
+        // Small delay to ensure scroll position is calculated after render
+        const checkInitialScroll = () => {
+            const currentProgress = scrollYProgress.get();
+            if (currentProgress > 0.6) {
+                setIsThreeDActive(true);
+            }
+        };
+
+        // Check immediately and after a small delay for initial render
+        checkInitialScroll();
+        const timeout = setTimeout(checkInitialScroll, 100);
+
+        return () => clearTimeout(timeout);
+    }, [scrollYProgress]);
 
     // Line draws from 0.5 to 0.85 (capped as per Image 2)
     const pathLength = useTransform(scrollYProgress, [0, 0.7], [0.5, 0.70]);
