@@ -12,7 +12,7 @@ import './Home.css';
 const Home = () => {
     const [isThreeDActive, setIsThreeDActive] = useState(false);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-    const [isMuted, setIsMuted] = useState(true); // Default to muted for auto-play best practices
+    const [isMuted, setIsMuted] = useState(false); // Play with sound by default
     const [isPanelClosing, setIsPanelClosing] = useState(false);
     const videoRef = useRef(null);
 
