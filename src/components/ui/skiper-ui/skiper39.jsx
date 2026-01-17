@@ -259,32 +259,166 @@ const CrowdCanvas = ({
 
 const Skiper39 = () => {
   return (
-    <div className="relative min-h-[80vh] w-full py-20" style={{ background: '#050A30' }}>
-      <div className="relative z-10 text-center w-full px-4 pt-16 pb-10">
+    <div className="relative min-h-[100vh] w-full overflow-hidden" style={{ background: 'linear-gradient(180deg, #050A30 0%, #0a1245 50%, #050A30 100%)' }}>
+
+      {/* Animated Background Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large glowing orb - top left */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(196, 255, 60, 0.15) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Medium orb - top right */}
+        <motion.div
+          className="absolute top-10 right-0 w-[400px] h-[400px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(0, 234, 255, 0.1) 0%, transparent 70%)',
+            filter: 'blur(50px)',
+          }}
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Small floating dots */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-[#c4ff3c]"
+            style={{
+              left: `${15 + i * 10}%`,
+              top: `${20 + (i % 3) * 15}%`,
+              opacity: 0.4,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Horizontal accent lines */}
+      <div className="absolute top-[12%] left-0 right-0 flex justify-center gap-4 pointer-events-none">
+        <motion.div
+          className="h-px w-32 bg-gradient-to-r from-transparent via-[#c4ff3c]/30 to-transparent"
+          animate={{ scaleX: [0.5, 1, 0.5], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="h-px w-48 bg-gradient-to-r from-transparent via-[#c4ff3c]/50 to-transparent"
+          animate={{ scaleX: [0.7, 1, 0.7], opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+        <motion.div
+          className="h-px w-32 bg-gradient-to-r from-transparent via-[#c4ff3c]/30 to-transparent"
+          animate={{ scaleX: [0.5, 1, 0.5], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center w-full px-4 pt-28 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2
-            className="text-white text-4xl sm:text-5xl md:text-7xl font-light uppercase tracking-tight leading-tight mb-8 drop-shadow-2xl"
-            style={{ fontFamily: "'Bebas Neue', display" }}
+          {/* Eyebrow text */}
+          <motion.span
+            className="inline-block text-[#c4ff3c]/70 text-xs sm:text-sm uppercase tracking-[0.3em] mb-8 font-light"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
           >
-            Ready to Join <span className="text-[#c4ff3c]" style={{ textShadow: '0 0 20px rgba(196, 255, 60, 0.4)' }}>KIXTIX?</span>
-          </h2>
-          <p className="text-white/50 text-sm sm:text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed tracking-wide mb-10">
+            ✦ Join the Movement ✦
+          </motion.span>
+
+          {/* Main headline */}
+          <motion.h2
+            className="text-white text-4xl sm:text-6xl md:text-8xl font-light uppercase tracking-tight leading-[0.95] mb-8"
+            style={{ fontFamily: "'Bebas Neue', display" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Ready to Join{" "}
+            <span
+              className="text-[#c4ff3c] inline-block"
+              style={{
+                textShadow: '0 0 40px rgba(196, 255, 60, 0.5), 0 0 80px rgba(196, 255, 60, 0.3)',
+              }}
+            >
+              KIXTIX?
+            </span>
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-white/60 text-sm sm:text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed tracking-wide mb-14"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            viewport={{ once: true }}
+          >
             Be part of the movement that's redefining music promotion.
             Connect with artists and grow your influence today.
-          </p>
-          <div className="relative flex justify-center mb-8">
-            <div className="h-16 w-px bg-gradient-to-b from-[#c4ff3c] to-transparent"></div>
-          </div>
+          </motion.p>
+
+          {/* Animated vertical line */}
+          <motion.div
+            className="relative flex justify-center"
+            initial={{ opacity: 0, scaleY: 0 }}
+            whileInView={{ opacity: 1, scaleY: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="h-24 w-px bg-gradient-to-b from-[#c4ff3c] via-[#c4ff3c]/50 to-transparent" />
+            <motion.div
+              className="absolute top-0 h-10 w-px bg-[#c4ff3c]"
+              animate={{ y: [0, 70, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              style={{ boxShadow: '0 0 10px rgba(196, 255, 60, 0.8)' }}
+            />
+          </motion.div>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-[60%] w-full">
+
+      {/* Crowd Canvas */}
+      <div className="absolute bottom-0 left-0 right-0 h-[50%] w-full">
+        {/* Gradient overlay on top of crowd */}
+        <div
+          className="absolute inset-x-0 top-0 h-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to bottom, #050A30 0%, transparent 100%)' }}
+        />
         <CrowdCanvas src="/images/peeps/all-peeps.png" rows={30} cols={1} />
       </div>
+
+      {/* Bottom vignette */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none z-20"
+        style={{ background: 'linear-gradient(to top, #050A30 0%, transparent 100%)' }}
+      />
     </div>
   );
 };

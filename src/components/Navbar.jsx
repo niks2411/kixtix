@@ -46,14 +46,7 @@ const Navbar = () => {
                         Home
                     </NavLink>
 
-                    {/* Video Promotions - Highlighted as Core Service */}
-                    <NavLink
-                        to="/video-promotions"
-                        className={({ isActive }) => `nav-link nav-link-featured ${isActive ? 'active' : ''}`}
-                    >
-                        <span className="featured-icon">🎬</span>
-                        Video Promotions
-                    </NavLink>
+
 
                     {/* Services Dropdown */}
                     <div
@@ -130,9 +123,7 @@ const Navbar = () => {
                     >
                         <div className="mobile-menu-content">
                             <NavLink to="/" className="mobile-link">Home</NavLink>
-                            <NavLink to="/video-promotions" className="mobile-link mobile-link-featured">
-                                🎬 Video Promotions
-                            </NavLink>
+
 
                             <div className="mobile-dropdown">
                                 <button

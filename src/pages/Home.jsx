@@ -6,6 +6,7 @@ import ParallaxGallery from '../components/ParallaxGallery';
 import { Skiper39 } from '@/components/ui/skiper-ui/skiper39';
 import { Skiper58, TextRoll } from '@/components/ui/skiper-ui/skiper58';
 import { OrbitingCircles } from '@/components/ui/OrbitingCircles';
+import { AnimatedTestimonials } from '../components/ui/AnimatedTestimonials';
 import './Home.css';
 
 const Home = () => {
@@ -15,13 +16,9 @@ const Home = () => {
     const [isPanelClosing, setIsPanelClosing] = useState(false);
     const videoRef = useRef(null);
 
-    // List of Music Videos to display in the 3D player
-    // Add your YouTube video IDs here (the part after v= or in the embed URL)
     const showcaseVideos = [
-        { id: '/music1.mp4', title: 'Our Latest Work', isLocal: true },
-        { id: '/music2.mp4', title: 'Featured Release', isLocal: true },
-        { id: 'dQw4w9WgXcQ', title: 'Music Video Showcase 1' },
-        { id: 'BJbgZyHTptc', title: 'Music Video Showcase 2' },
+        { id: '/music1.mp4', title: 'Our Latest Work' },
+        { id: '/music2.mp4', title: 'Featured Release' },
     ];
 
     const nextVideo = (e) => {
@@ -162,19 +159,28 @@ const Home = () => {
 
     const testimonials = [
         {
-            quote: "They took our social media from zero to deeply engaged in just months. The results speak for themselves — this team delivers.",
-            name: "Gurnam Bhullar",
-            title: "Punjabi Singer",
+            quote: "Kixtix Media has been instrumental in promoting my music to millions. Their YouTube strategies helped my songs reach audiences I never imagined. Truly professional team!",
+            name: "Neha Bhasin",
+            designation: "Playback Singer & Artist",
+            image: "/images/r1.webp",
         },
         {
-            quote: "We tried many marketing companies before Kixtix. They skyrocketed our presence and actually took time to understand our goals.",
+            quote: "Working with Kixtix was a game-changer for my digital presence. Their promotion techniques are top-notch and the results speak for themselves. Highly recommended!",
+            name: "Mika Singh",
+            designation: "Bollywood Singer & Performer",
+            image: "/images/r2.webp",
+        },
+        {
+            quote: "Kixtix Media understands the Punjabi music industry like no other. They've helped us grow our channel exponentially with targeted promotions and smart marketing.",
+            name: "Lokdhun Punjab",
+            designation: "Punjabi Music Channel",
+            image: "/images/r3.webp",
+        },
+        {
+            quote: "Our partnership with Kixtix has delivered outstanding results. Their team knows how to make music videos viral and reach the right audience every time.",
             name: "Jass Records",
-            title: "Music Label, Punjab",
-        },
-        {
-            quote: "Comprehensive, fast, and well-planned. The SEO and social media results have been outstanding. Highly responsive team.",
-            name: "Tanishq Kaur",
-            title: "Singer & Artist",
+            designation: "Music Label & Production House",
+            image: "/images/r4.webp",
         },
     ];
 
@@ -289,26 +295,15 @@ const Home = () => {
                                         transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                                     >
                                         <div className="video-viewport">
-                                            {showcaseVideos[currentVideoIndex].isLocal ? (
-                                                <video
-                                                    key={showcaseVideos[currentVideoIndex].id + isMuted}
-                                                    src={showcaseVideos[currentVideoIndex].id}
-                                                    className="video-player-iframe"
-                                                    autoPlay
-                                                    muted={isMuted}
-                                                    loop
-                                                    playsInline
-                                                />
-                                            ) : (
-                                                <iframe
-                                                    key={showcaseVideos[currentVideoIndex].id + isMuted}
-                                                    src={`https://www.youtube.com/embed/${showcaseVideos[currentVideoIndex].id}?autoplay=1${isMuted ? '&mute=1' : ''}`}
-                                                    title="Music Video"
-                                                    className="video-player-iframe"
-                                                    allow="autoplay; encrypted-media"
-                                                    allowFullScreen
-                                                ></iframe>
-                                            )}
+                                            <video
+                                                key={showcaseVideos[currentVideoIndex].id + isMuted}
+                                                src={showcaseVideos[currentVideoIndex].id}
+                                                className="video-player-iframe"
+                                                autoPlay
+                                                muted={isMuted}
+                                                loop
+                                                playsInline
+                                            />
                                         </div>
 
                                         {/* Video Info Overlay */}
@@ -691,38 +686,15 @@ const Home = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="badge">Artists We've Worked With</span>
+                        <span className="badge">Success Stories</span>
                         <h2 className="section-title">
                             THEY TRUSTED US.<br />
                             <span className="gradient-text">WE DELIVERED.</span>
                         </h2>
                     </motion.div>
-
-                    <div className="testimonials-grid">
-                        {testimonials.map((testimonial, index) => (
-                            <motion.div
-                                key={testimonial.name}
-                                className="testimonial-card"
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.15 }}
-                            >
-                                <div className="quote-mark">"</div>
-                                <p className="testimonial-quote">{testimonial.quote}</p>
-                                <div className="testimonial-author">
-                                    <div className="author-avatar glow-pulse">
-                                        {testimonial.name.charAt(0)}
-                                    </div>
-                                    <div className="author-info">
-                                        <span className="author-name">{testimonial.name}</span>
-                                        <span className="author-title">{testimonial.title}</span>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
+
+                <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
             </section>
 
             {/* Final CTA */}
