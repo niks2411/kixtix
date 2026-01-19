@@ -12,7 +12,7 @@ import './Home.css';
 const Home = () => {
     const [isThreeDActive, setIsThreeDActive] = useState(false);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-    const [isMuted, setIsMuted] = useState(false); // Play with sound by default
+    const [isMuted, setIsMuted] = useState(true); // Must be muted for autoplay (browser requirement)
     const [isPanelClosing, setIsPanelClosing] = useState(false);
     const videoRef = useRef(null);
 
@@ -82,6 +82,15 @@ const Home = () => {
 
         return () => clearTimeout(timeout);
     }, [scrollYProgress]);
+
+    // Play video when 3D view becomes active
+    useEffect(() => {
+        if (isThreeDActive && videoRef.current) {
+            videoRef.current.play().catch(err => {
+                console.log('Video autoplay prevented:', err);
+            });
+        }
+    }, [isThreeDActive]);
 
     // Line draws from 0.5 to 0.85 (capped as per Image 2)
     const pathLength = useTransform(scrollYProgress, [0, 0.7], [0.5, 0.70]);
@@ -313,6 +322,7 @@ const Home = () => {
                                     >
                                         <div className="video-viewport">
                                             <video
+                                                ref={videoRef}
                                                 key={showcaseVideos[currentVideoIndex].id + isMuted}
                                                 src={showcaseVideos[currentVideoIndex].id}
                                                 className="video-player-iframe"
