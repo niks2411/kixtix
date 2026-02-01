@@ -31,7 +31,7 @@ function FlowingMenu({
     );
 }
 
-function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marqueeTextColor, borderColor, isFirst }) {
+function MenuItem({ link, text, image, imageScale = 1, speed, textColor, marqueeBgColor, marqueeTextColor, borderColor, isFirst }) {
     const itemRef = useRef(null);
     const marqueeRef = useRef(null);
     const marqueeInnerRef = useRef(null);
@@ -140,7 +140,10 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
                             <span className="marquee-text">{text}</span>
                             <div
                                 className="marquee-image"
-                                style={{ backgroundImage: image ? `url(${image})` : 'none' }}
+                                style={{
+                                    backgroundImage: image ? `url(${image})` : 'none',
+                                    transform: `scale(${imageScale})`
+                                }}
                             />
                         </div>
                     ))}

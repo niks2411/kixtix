@@ -47,59 +47,76 @@
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 1rem;
-    background: transparent;
+    gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    background: rgba(196, 255, 60, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(196, 255, 60, 0.15);
     border-radius: 100px;
     width: fit-content;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        inset 0 0 10px rgba(196, 255, 60, 0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hero-badge:hover {
+    background: rgba(196, 255, 60, 0.08);
+    border-color: rgba(196, 255, 60, 0.3);
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(196, 255, 60, 0.1);
 }
 
 .hero-badge span {
-    font-size: 0.65rem;
-    font-weight: 300;
-    color: rgba(196, 255, 60, 0.9);
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     letter-spacing: 0.2em;
+    font-family: var(--font-heading);
 }
 
-/* Equalizer animation */
-.equalizer {
+/* Hero Badge Equalizer animation */
+.hero-badge .equalizer {
     display: flex;
     align-items: flex-end;
-    gap: 3px;
-    height: 20px;
+    gap: 1.5px;
+    height: 35px !important;
 }
 
-.eq-bar {
-    width: 3px;
-    background: #c4ff3c;
-    border-radius: 2px;
-    animation: eqBounce 0.8s ease-in-out infinite;
+.hero-badge .eq-bar {
+    width: 1.5px;
+    background: linear-gradient(to top, #c4ff3c, #00EAFF);
+    border-radius: 1px;
+    animation: eqBounce 1s ease-in-out infinite;
+    transform-origin: bottom;
 }
 
-.eq-bar:nth-child(1) {
+.hero-badge .eq-bar:nth-child(1) {
     height: 40%;
-    animation-delay: 0s;
-}
-
-.eq-bar:nth-child(2) {
-    height: 70%;
     animation-delay: 0.1s;
 }
 
-.eq-bar:nth-child(3) {
-    height: 100%;
-    animation-delay: 0.2s;
-}
-
-.eq-bar:nth-child(4) {
-    height: 60%;
+.hero-badge .eq-bar:nth-child(2) {
+    height: 70%;
     animation-delay: 0.3s;
 }
 
-.eq-bar:nth-child(5) {
-    height: 30%;
+.hero-badge .eq-bar:nth-child(3) {
+    height: 100%;
+    animation-delay: 0.0s;
+}
+
+.hero-badge .eq-bar:nth-child(4) {
+    height: 60%;
+    animation-delay: 0.2s;
+}
+
+.hero-badge .eq-bar:nth-child(5) {
+    height: 80%;
     animation-delay: 0.4s;
 }
 
@@ -107,11 +124,13 @@
 
     0%,
     100% {
-        transform: scaleY(0.5);
+        transform: scaleY(0.4);
+        opacity: 0.7;
     }
 
     50% {
         transform: scaleY(1);
+        opacity: 1;
     }
 }
 

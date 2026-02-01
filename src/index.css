@@ -358,6 +358,7 @@ a:hover {
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  margin-bottom: 1rem;
 }
 
 /* ========================================

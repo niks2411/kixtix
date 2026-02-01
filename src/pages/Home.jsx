@@ -124,11 +124,11 @@ const Home = () => {
 
     // FlowingMenu items - Services showcase (leave space for images, you can add them later)
     const menuItems = [
-        { link: '/video-promotions', text: 'Video Promotions', image: '' },
-        { link: '/services/digital-marketing', text: 'Digital Marketing', image: '' },
-        { link: '/services/music-distribution', text: 'Music Distribution', image: '' },
-        { link: '/services/whatsapp-marketing', text: 'WhatsApp Marketing', image: '' },
-        { link: '/services/app-marketing', text: 'App Marketing', image: '' },
+        { link: '/video-promotions', text: 'Video Promotions', image: '/images/a.webp', imageScale: 1.3 },
+        { link: '/services/digital-marketing', text: 'Digital Marketing', image: '/images/b.webp', imageScale: 1.3 },
+        { link: '/services/music-distribution', text: 'Music Distribution', image: '/images/c.webp', imageScale: 1.3 },
+        { link: '/services/whatsapp-marketing', text: 'WhatsApp Marketing', image: '/images/d.webp', imageScale: 1.3 },
+        { link: '/services/app-marketing', text: 'App Marketing', image: '/images/e.webp', imageScale: 1.3 },
     ];
 
 

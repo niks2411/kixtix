@@ -259,7 +259,7 @@ const CrowdCanvas = ({
 
 const Skiper39 = () => {
   return (
-    <div className="relative min-h-[100vh] w-full overflow-hidden" style={{ background: 'linear-gradient(180deg, #050A30 0%, #0a1245 50%, #050A30 100%)' }}>
+    <div className="relative min-h-[100vh] w-full overflow-hidden mt-20" style={{ background: 'linear-gradient(180deg, #050A30 0%, #0a1245 50%, #050A30 100%)' }}>
 
       {/* Animated Background Orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -335,7 +335,7 @@ const Skiper39 = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center w-full px-4 pt-28 pb-20">
+      <div className="relative z-10 text-center w-full px-4 pb-20" style={{ paddingTop: '30px' }}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -375,7 +375,7 @@ const Skiper39 = () => {
 
           {/* Subtitle */}
           <motion.p
-            className="text-white/60 text-sm sm:text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed tracking-wide mb-14"
+            className="text-white/60 text-sm sm:text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed tracking-wide mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -393,7 +393,7 @@ const Skiper39 = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <div className="h-24 w-px bg-gradient-to-b from-[#c4ff3c] via-[#c4ff3c]/50 to-transparent" />
+            <div className="h-12 w-px bg-gradient-to-b from-[#c4ff3c] via-[#c4ff3c]/50 to-transparent" />
             <motion.div
               className="absolute top-0 h-10 w-px bg-[#c4ff3c]"
               animate={{ y: [0, 70, 0], opacity: [1, 0, 1] }}
@@ -405,7 +405,7 @@ const Skiper39 = () => {
       </div>
 
       {/* Crowd Canvas */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50%] w-full">
+      <div className="absolute bottom-0 left-0 right-0 h-[60%] w-full">
         {/* Gradient overlay on top of crowd */}
         <div
           className="absolute inset-x-0 top-0 h-32 z-10 pointer-events-none"
