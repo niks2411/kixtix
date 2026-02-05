@@ -10,9 +10,12 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import './index.css';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navbar />
       <main className="main-content">
         <Routes>

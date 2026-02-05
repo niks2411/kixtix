@@ -1,7 +1,41 @@
-import { motion } from 'framer-motion';
+import { motion, useInView, animate } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { StickyScroll } from '../components/ui/sticky-scroll-reveal';
 import './About.css';
+
+const StatItem = ({ stat, index }) => {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true });
+
+    useEffect(() => {
+        if (inView) {
+            const node = ref.current;
+            const controls = animate(0, stat.value, {
+                duration: 2,
+                onUpdate(value) {
+                    node.textContent = Math.floor(value).toLocaleString();
+                },
+            });
+            return () => controls.stop();
+        }
+    }, [stat.value, inView]);
+
+    return (
+        <motion.div
+            className="stat-item"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+        >
+            <span className="stat-number">
+                <span ref={ref}>0</span>{stat.suffix}
+            </span>
+            <span className="stat-label">{stat.label}</span>
+        </motion.div>
+    );
+};
 
 const About = () => {
     const values = [
@@ -14,10 +48,10 @@ const About = () => {
     ];
 
     const stats = [
-        { number: '500+', label: 'Projects Completed' },
-        { number: '200+', label: 'Happy Clients' },
-        { number: '1B+', label: 'Monthly Platform Users' },
-        { number: '5+', label: 'Years Experience' },
+        { value: 500, suffix: '+', label: 'Projects Completed' },
+        { value: 200, suffix: '+', label: 'Happy Clients' },
+        { value: 1, suffix: 'B+', label: 'Monthly Platform Users' },
+        { value: 5, suffix: '+', label: 'Years Experience' },
     ];
 
     // Website services content with images
@@ -101,17 +135,7 @@ const About = () => {
                 <div className="container">
                     <div className="about-stats-grid">
                         {stats.map((stat, index) => (
-                            <motion.div
-                                key={stat.label}
-                                className="stat-item"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.1 }}
-                            >
-                                <span className="stat-number">{stat.number}</span>
-                                <span className="stat-label">{stat.label}</span>
-                            </motion.div>
+                            <StatItem key={stat.label} stat={stat} index={index} />
                         ))}
                     </div>
                 </div>
