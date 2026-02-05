@@ -1,34 +1,17 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ChatBubbles from '../components/ui/ChatBubbles';
+import PhoneMockup from '../components/ui/PhoneMockup';
 import './ServicePage.css';
 
 const WhatsAppMarketing = () => {
-    const messages = [
-        {
-            title: '800M+ Active Users',
-            content: 'WhatsApp has over 800 million active users globally. We help you tap into an ever-increasing pool of prospective customers who prefer messaging over other forms of communication.'
-        },
-        {
-            title: 'Bulk Messaging',
-            content: 'Reach thousands of potential customers with a single campaign. Our bulk WhatsApp marketing service ensures your message reaches the right audience at the right time.'
-        },
-        {
-            title: 'Rich Media Support',
-            content: 'Send images, videos, documents, and audio files directly to your customers. Create engaging multimedia campaigns that capture attention and drive action.'
-        },
-        {
-            title: 'Two-Way Communication',
-            content: 'Unlike traditional SMS, WhatsApp enables real conversations with your customers. Build relationships and provide instant support through direct messaging.'
-        },
-        {
-            title: 'Cost Effective',
-            content: 'WhatsApp marketing is significantly more cost-effective than traditional advertising. Get better ROI with higher open rates and engagement compared to email or SMS.'
-        },
-        {
-            title: 'High Delivery Rate',
-            content: 'With 98% message delivery rate and 90%+ open rate, WhatsApp ensures your marketing messages actually reach and get read by your target audience.'
-        },
+    // Chat messages for the phone mockup
+    const chatMessages = [
+        { text: "Tell me about WhatsApp marketing!", isUser: true, time: "10:31 AM" },
+        { text: "WhatsApp has 800M+ active users! We help you reach them directly with personalized campaigns.", isUser: false, time: "10:31 AM" },
+        { text: "What's the delivery rate?", isUser: true, time: "10:32 AM" },
+        { text: "98% delivery rate with 90%+ open rate! Much better than email or SMS marketing.", isUser: false, time: "10:32 AM" },
+        { text: "Can I send images and videos?", isUser: true, time: "10:33 AM" },
+        { text: "Absolutely! Rich media including images, videos, documents, and audio. Engage your audience like never before! 🎯", isUser: false, time: "10:33 AM" },
     ];
 
     const features = [
@@ -62,8 +45,8 @@ const WhatsAppMarketing = () => {
                 zIndex: 0,
             }} />
 
-            {/* Hero Section */}
-            <section className="service-hero">
+            {/* Hero Section with Phone Mockup */}
+            <section className="service-hero" style={{ minHeight: '100vh', paddingTop: '120px' }}>
                 <div className="service-hero-bg">
                     <div className="service-hero-gradient" style={{
                         background: 'radial-gradient(ellipse at 50% 0%, rgba(37, 211, 102, 0.12) 0%, transparent 50%)'
@@ -73,35 +56,54 @@ const WhatsAppMarketing = () => {
                     }}></div>
                 </div>
                 <div className="container">
-                    <motion.div
-                        className="service-hero-content"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <motion.span
-                            className="badge"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            style={{ background: 'rgba(37, 211, 102, 0.15)', color: '#25D366' }}
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '4rem',
+                        alignItems: 'center',
+                    }}>
+                        {/* Left - Text Content */}
+                        <motion.div
+                            className="service-hero-content"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6 }}
+                            style={{ textAlign: 'left' }}
                         >
-                            WhatsApp Marketing
-                        </motion.span>
-                        <h1 className="service-hero-title">
-                            Direct Customer <span style={{ color: '#25D366' }}>Engagement</span>
-                        </h1>
-                        <p className="service-hero-subtitle">
-                            Capitalize on WhatsApp's 800+ million active users to reach prospective customers directly.
-                            Build meaningful relationships through personalized messaging that drives conversions and loyalty.
-                        </p>
-                        <div className="service-hero-actions">
-                            <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#25D366', borderColor: '#25D366' }}>
-                                Start WhatsApp Campaign
-                            </Link>
-                            <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
-                        </div>
-                    </motion.div>
+                            <motion.span
+                                className="badge"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 }}
+                                style={{ background: 'rgba(37, 211, 102, 0.15)', color: '#25D366' }}
+                            >
+                                WhatsApp Marketing
+                            </motion.span>
+                            <h1 className="service-hero-title" style={{ fontSize: '3rem' }}>
+                                Direct Customer <span style={{ color: '#25D366' }}>Engagement</span>
+                            </h1>
+                            <p className="service-hero-subtitle">
+                                Capitalize on WhatsApp's 800+ million active users to reach prospective customers directly.
+                                Build meaningful relationships through personalized messaging that drives conversions and loyalty.
+                            </p>
+                            <div className="service-hero-actions">
+                                <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#25D366', borderColor: '#25D366' }}>
+                                    Start WhatsApp Campaign
+                                </Link>
+                                <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
+                            </div>
+                        </motion.div>
+
+                        {/* Right - Phone Mockup */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            style={{ position: 'relative', height: '700px' }}
+                        >
+                            <PhoneMockup messages={chatMessages} />
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -127,23 +129,6 @@ const WhatsAppMarketing = () => {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            {/* Chat Bubbles Section */}
-            <section className="section">
-                <div className="container">
-                    <motion.div
-                        className="section-header"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        style={{ textAlign: 'center', marginBottom: '2rem' }}
-                    >
-                        <h2 className="section-title">Why <span style={{ color: '#25D366' }}>WhatsApp</span> Marketing?</h2>
-                        <p className="section-subtitle">Discover the power of direct messaging for your business</p>
-                    </motion.div>
-                </div>
-                <ChatBubbles messages={messages} />
             </section>
 
             {/* Features Grid */}
