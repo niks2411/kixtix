@@ -4,15 +4,25 @@ import { motion } from 'framer-motion';
 const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
     const [sliderPosition, setSliderPosition] = useState(50);
     const [isDragging, setIsDragging] = useState(false);
-    const [afterViews, setAfterViews] = useState(5200000);
+    const [baseAfterViews, setBaseAfterViews] = useState(5200000);
+    const [progress, setProgress] = useState(35);
     const videoBeforeRef = useRef(null);
     const videoAfterRef = useRef(null);
+
+    // Calculate current views based on slider position
+    // Slider at 0% = 47 views, slider at 100% = baseAfterViews
+    const beforeViews = 47;
+    const currentViews = Math.round(beforeViews + ((baseAfterViews - beforeViews) * (sliderPosition / 100)));
 
     // Sync both videos
     useEffect(() => {
         const syncVideos = () => {
             if (videoBeforeRef.current && videoAfterRef.current) {
                 videoAfterRef.current.currentTime = videoBeforeRef.current.currentTime;
+                // Update progress
+                const duration = videoBeforeRef.current.duration || 1;
+                const current = videoBeforeRef.current.currentTime || 0;
+                setProgress((current / duration) * 100);
             }
         };
 
@@ -23,10 +33,10 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
         }
     }, []);
 
-    // Animate the after view count
+    // Animate the base after view count
     useEffect(() => {
         const interval = setInterval(() => {
-            setAfterViews(prev => prev + Math.floor(Math.random() * 1000) + 500);
+            setBaseAfterViews(prev => prev + Math.floor(Math.random() * 1000) + 500);
         }, 100);
         return () => clearInterval(interval);
     }, []);
@@ -51,7 +61,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
         if (!isDragging) return;
         const rect = e.currentTarget.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
-        setSliderPosition(Math.max(10, Math.min(90, x)));
+        setSliderPosition(Math.max(5, Math.min(95, x)));
     };
 
     const formatNumber = (num) => {
@@ -60,10 +70,88 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
         return num.toString();
     };
 
+    // Determine color based on slider position
+    const isViral = sliderPosition > 60;
+    const counterBg = isViral ? 'rgba(255,0,0,0.2)' : 'rgba(0,0,0,0.7)';
+    const counterTextColor = isViral ? '#fff' : '#888';
+    const counterBorder = isViral ? '1px solid rgba(255,255,255,0.2)' : 'none';
+
+    // YouTube-style bottom bar component
+    const YouTubeControls = ({ isAfter = false }) => (
+        <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)',
+            padding: '40px 16px 12px',
+        }}>
+            {/* Progress Bar */}
+            <div style={{
+                width: '100%',
+                height: '4px',
+                background: 'rgba(255,255,255,0.3)',
+                borderRadius: '2px',
+                marginBottom: '10px',
+                cursor: 'pointer',
+            }}>
+                <div style={{
+                    width: `${progress}%`,
+                    height: '100%',
+                    background: isAfter ? '#ff0000' : '#666',
+                    borderRadius: '2px',
+                    transition: 'width 0.1s',
+                }} />
+            </div>
+
+            {/* Controls Row */}
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+            }}>
+                {/* Left Controls */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    {/* Play Button */}
+                    <div style={{ color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>▶</div>
+                    {/* Volume */}
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        color: '#fff',
+                        fontSize: '1rem',
+                    }}>
+                        🔊
+                        <div style={{
+                            width: '60px',
+                            height: '3px',
+                            background: 'rgba(255,255,255,0.3)',
+                            borderRadius: '2px',
+                        }}>
+                            <div style={{ width: '70%', height: '100%', background: '#fff', borderRadius: '2px' }} />
+                        </div>
+                    </div>
+                    {/* Time */}
+                    <span style={{ color: '#fff', fontSize: '0.8rem', opacity: 0.9 }}>
+                        1:24 / 3:45
+                    </span>
+                </div>
+
+                {/* Right Controls */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', color: '#fff', fontSize: '1rem' }}>
+                    <span style={{ cursor: 'pointer' }}>⚙️</span>
+                    <span style={{ cursor: 'pointer' }}>🎬</span>
+                    <span style={{ cursor: 'pointer' }}>⛶</span>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <div className="before-after-container" style={{
             width: '100%',
-            maxWidth: '900px',
+            maxWidth: '950px',
             margin: '0 auto',
             padding: '2rem',
         }}>
@@ -92,7 +180,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                     position: 'relative',
                     width: '100%',
                     aspectRatio: '16/9',
-                    borderRadius: '20px',
+                    borderRadius: '12px',
                     overflow: 'hidden',
                     boxShadow: '0 40px 80px rgba(0, 0, 0, 0.4)',
                     cursor: isDragging ? 'grabbing' : 'grab',
@@ -138,7 +226,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        background: 'rgba(0,0,0,0.4)',
+                        background: 'rgba(0,0,0,0.3)',
                     }} />
 
                     {/* Before Stats Overlay */}
@@ -148,65 +236,61 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        display: 'flex',
-                        flexDirection: 'column',
                     }}>
                         {/* Top Badge */}
                         <div style={{
                             position: 'absolute',
-                            top: '20px',
-                            left: '20px',
-                            background: 'rgba(100,100,100,0.8)',
-                            padding: '8px 16px',
-                            borderRadius: '20px',
-                            color: '#999',
-                            fontSize: '0.85rem',
-                        }}>
-                            😔 No Promotion
-                        </div>
-
-                        {/* Low View Count */}
-                        <div style={{
-                            position: 'absolute',
-                            bottom: '20px',
-                            left: '20px',
-                        }}>
-                            <div style={{ fontSize: '3rem', fontWeight: '700', color: '#666' }}>
-                                47
-                            </div>
-                            <div style={{ fontSize: '1rem', color: '#888' }}>views</div>
-                        </div>
-
-                        {/* Sad Engagement */}
-                        <div style={{
-                            position: 'absolute',
-                            bottom: '30px',
-                            left: '130px',
-                            display: 'flex',
-                            gap: '20px',
-                            color: '#666',
-                            fontSize: '1rem',
-                        }}>
-                            <span>👍 2</span>
-                            <span>💬 0</span>
-                            <span>↗️ 0</span>
-                        </div>
-
-                        {/* BEFORE Label */}
-                        <div style={{
-                            position: 'absolute',
-                            top: '20px',
-                            right: '20px',
-                            background: 'rgba(100,100,100,0.8)',
+                            top: '16px',
+                            left: '16px',
+                            background: 'rgba(80,80,80,0.9)',
                             padding: '6px 14px',
-                            borderRadius: '6px',
-                            color: '#999',
+                            borderRadius: '4px',
+                            color: '#aaa',
                             fontSize: '0.8rem',
-                            fontWeight: '600',
+                            fontWeight: '500',
                         }}>
                             BEFORE
                         </div>
+
+                        {/* YouTube Logo area */}
+                        <div style={{
+                            position: 'absolute',
+                            top: '16px',
+                            right: '16px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                        }}>
+                            <div style={{
+                                background: '#666',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                color: '#aaa',
+                                fontSize: '0.7rem',
+                            }}>
+                                ▶ YouTube
+                            </div>
+                        </div>
+
+                        {/* Engagement Row - Bottom Left */}
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '70px',
+                            left: '16px',
+                            display: 'flex',
+                            gap: '16px',
+                            color: '#666',
+                            fontSize: '0.9rem',
+                        }}>
+                            <span>👁️ 47</span>
+                            <span>👍 2</span>
+                            <span>👎 0</span>
+                            <span>💬 0</span>
+                        </div>
                     </div>
+
+                    {/* YouTube Controls */}
+                    <YouTubeControls isAfter={false} />
                 </div>
 
                 {/* AFTER Side - Clipped */}
@@ -241,7 +325,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        background: 'linear-gradient(to top, rgba(255,0,0,0.2) 0%, transparent 50%)',
+                        background: 'linear-gradient(to top, rgba(255,0,0,0.15) 0%, transparent 30%)',
                     }} />
 
                     {/* After Stats Overlay */}
@@ -252,67 +336,14 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         right: 0,
                         bottom: 0,
                     }}>
-                        {/* Trending Badge */}
-                        <motion.div
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 1, repeat: Infinity }}
-                            style={{
-                                position: 'absolute',
-                                top: '20px',
-                                left: '20px',
-                                background: 'linear-gradient(135deg, #ff4444 0%, #cc0000 100%)',
-                                padding: '8px 16px',
-                                borderRadius: '20px',
-                                color: '#fff',
-                                fontSize: '0.85rem',
-                                fontWeight: '600',
-                                boxShadow: '0 4px 20px rgba(255,0,0,0.4)',
-                            }}
-                        >
-                            🔥 TRENDING #1
-                        </motion.div>
-
-                        {/* High View Count */}
-                        <motion.div
-                            key={afterViews}
-                            initial={{ scale: 1.02 }}
-                            animate={{ scale: 1 }}
-                            style={{
-                                position: 'absolute',
-                                bottom: '20px',
-                                left: '20px',
-                            }}
-                        >
-                            <div style={{ fontSize: '3rem', fontWeight: '700', color: '#fff', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
-                                {formatNumber(afterViews)}
-                            </div>
-                            <div style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.9)' }}>views</div>
-                        </motion.div>
-
-                        {/* High Engagement */}
-                        <div style={{
-                            position: 'absolute',
-                            bottom: '30px',
-                            left: '150px',
-                            display: 'flex',
-                            gap: '20px',
-                            color: '#fff',
-                            fontSize: '1rem',
-                            textShadow: '0 2px 5px rgba(0,0,0,0.5)',
-                        }}>
-                            <span>👍 245K</span>
-                            <span>💬 12K</span>
-                            <span>↗️ 50K</span>
-                        </div>
-
                         {/* AFTER Label */}
                         <div style={{
                             position: 'absolute',
-                            top: '20px',
-                            right: '20px',
+                            top: '16px',
+                            left: '16px',
                             background: 'linear-gradient(135deg, #c4ff3c 0%, #87d300 100%)',
                             padding: '6px 14px',
-                            borderRadius: '6px',
+                            borderRadius: '4px',
                             color: '#050A30',
                             fontSize: '0.8rem',
                             fontWeight: '700',
@@ -320,28 +351,76 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                             AFTER
                         </div>
 
+                        {/* Trending Badge */}
+                        <motion.div
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                            style={{
+                                position: 'absolute',
+                                top: '16px',
+                                right: '16px',
+                                background: '#ff0000',
+                                padding: '6px 12px',
+                                borderRadius: '4px',
+                                color: '#fff',
+                                fontSize: '0.8rem',
+                                fontWeight: '600',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                            }}
+                        >
+                            <span>▶</span> TRENDING #1
+                        </motion.div>
+
                         {/* Verified Badge */}
                         <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            transition={{ delay: 1, type: 'spring' }}
+                            transition={{ delay: 0.5, type: 'spring' }}
                             style={{
                                 position: 'absolute',
-                                top: '60px',
-                                right: '20px',
-                                background: 'rgba(0,0,0,0.6)',
-                                padding: '6px 12px',
-                                borderRadius: '20px',
+                                top: '52px',
+                                right: '16px',
+                                background: 'rgba(0,0,0,0.7)',
+                                padding: '4px 10px',
+                                borderRadius: '4px',
                                 color: '#fff',
-                                fontSize: '0.75rem',
+                                fontSize: '0.7rem',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '4px',
                             }}
                         >
-                            ✓ Verified
+                            ✓ Verified Artist
                         </motion.div>
+
+                        {/* Engagement Row - Bottom Left */}
+                        <div style={{
+                            position: 'absolute',
+                            bottom: '70px',
+                            left: '16px',
+                            display: 'flex',
+                            gap: '16px',
+                            color: '#fff',
+                            fontSize: '0.9rem',
+                            textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+                        }}>
+                            <motion.span
+                                key={currentViews}
+                                initial={{ scale: 1.1 }}
+                                animate={{ scale: 1 }}
+                            >
+                                👁️ {formatNumber(currentViews)}
+                            </motion.span>
+                            <span>👍 245K</span>
+                            <span>👎 1.2K</span>
+                            <span>💬 12K</span>
+                        </div>
                     </div>
+
+                    {/* YouTube Controls */}
+                    <YouTubeControls isAfter={true} />
                 </div>
 
                 {/* Slider Line */}
