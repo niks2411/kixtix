@@ -1,20 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import MusicDistributionHub from '../components/ui/MusicDistributionHub';
+import PlatformLogosGrid from '../components/ui/PlatformLogosGrid';
+import ShareMusicSection from '../components/ui/ShareMusicSection';
 import './ServicePage.css';
 
 const ContentAggregation = () => {
-    const platforms = [
-        { name: 'iTunes', image: '/images/1.png' },
-        { name: 'Gaana', image: '/images/2.png' },
-        { name: 'Hungama', image: '/images/3.png' },
-        { name: 'JioSaavn', image: '/images/4.png' },
-        { name: 'Spotify', image: '/images/5.png' },
-        { name: 'Amazon Music', image: '/images/7.png' },
-        { name: 'Apple Music', image: '/images/8.png' },
-        { name: 'Google Play', image: '/images/9.png' },
-    ];
-
     const features = [
         {
             title: 'Music Distribution',
@@ -46,13 +36,13 @@ const ContentAggregation = () => {
                 backgroundImage: 'url(/images/bg-content-aggregation.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                opacity: 0.5,
+                opacity: 0.20,
                 pointerEvents: 'none',
                 zIndex: 0,
             }} />
 
-            {/* Hero Section with Music Distribution Hub */}
-            <section className="service-hero" style={{ minHeight: '100vh', paddingTop: '100px' }}>
+            {/* Hero Section */}
+            <section className="service-hero" style={{ minHeight: 'auto', paddingTop: '100px', paddingBottom: '20px' }}>
                 <div className="service-hero-bg">
                     <div className="service-hero-gradient"></div>
                     <div className="service-hero-glow"></div>
@@ -85,18 +75,18 @@ const ContentAggregation = () => {
                             <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
                         </div>
                     </motion.div>
-
-                    {/* Music Distribution Hub Visualization */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        style={{ position: 'relative', minHeight: '550px' }}
-                    >
-                        <MusicDistributionHub platforms={platforms} />
-                    </motion.div>
                 </div>
             </section>
+
+            {/* Platform Logos Grid */}
+            <section style={{ padding: '40px 0' }}>
+                <div className="container">
+                    <PlatformLogosGrid />
+                </div>
+            </section>
+
+            {/* Share Music Section */}
+            <ShareMusicSection />
 
             {/* Features Section */}
             <section className="service-features section">

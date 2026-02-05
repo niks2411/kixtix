@@ -38,19 +38,19 @@ const DigitalMarketing = () => {
         {
             title: 'YouTube Ads',
             badge: 'Video Marketing',
-            image: '/images/services/adwords.png',
+            image: '/images/services/youtube-ads.png',
             description: 'Today, social media play an increasingly more important role in the life of society because users spend a lot of time online and they view social media as an important source of information. YouTube, being one of the largest video platforms, offers incredible reach and engagement opportunities.'
         },
         {
             title: 'Search Ads',
             badge: 'Intent Based',
-            image: '/images/services/text-ads.png',
+            image: '/images/services/search-ads.png',
             description: 'It is a method of placing online advertisements on web pages that show results from search engine queries. They are targeted to match key search terms (called keywords) entered on search engines. This targeting ability has contributed to the attractiveness of search advertising for advertisers.'
         },
         {
             title: 'Remarketing',
             badge: 'Retargeting',
-            image: '/images/services/banner-ads.png',
+            image: '/images/services/remarketing.png',
             description: 'Remarketing is a clever way to connect with visitors to your website who may not have made an immediate purchase or enquiry. It allows you to position targeted ads in front of a defined audience that had previously visited your website – as they browse elsewhere around the internet.'
         },
     ];
@@ -74,7 +74,7 @@ const DigitalMarketing = () => {
                 backgroundImage: 'url(/images/bg-digital-marketing.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                opacity: 0.5,
+                opacity: 0.20,
                 pointerEvents: 'none',
                 zIndex: 0,
             }} />

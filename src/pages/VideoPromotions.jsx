@@ -30,7 +30,7 @@ const VideoPromotions = () => {
                 backgroundImage: 'url(/images/bg-video-promotions.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                opacity: 0.5,
+                opacity: 0.20,
                 pointerEvents: 'none',
                 zIndex: 0,
             }} />
@@ -39,7 +39,7 @@ const VideoPromotions = () => {
             <section className="service-hero" style={{ minHeight: '100vh', paddingTop: '120px' }}>
                 <div className="service-hero-bg">
                     <div className="service-hero-gradient" style={{
-                        background: 'radial-gradient(ellipse at 50% 0%, rgba(255, 0, 0, 0.12) 0%, transparent 50%)'
+                        background: 'radial-gradient(ellipse at 50% 0%, rgba(196, 255, 60, 0.12) 0%, transparent 50%)'
                     }}></div>
                 </div>
                 <div className="container">
@@ -56,19 +56,19 @@ const VideoPromotions = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
-                            style={{ background: 'rgba(255, 0, 0, 0.15)', color: '#ff4444' }}
+                            style={{ background: 'rgba(196, 255, 60, 0.15)', color: '#c4ff3c' }}
                         >
                             Video Promotions
                         </motion.span>
                         <h1 className="service-hero-title">
-                            From Zero to <span style={{ color: '#ff4444' }}>Viral</span>
+                            From Zero to <span style={{ color: '#c4ff3c' }}>Viral</span>
                         </h1>
                         <p className="service-hero-subtitle">
                             See the difference our promotion makes. Same video, completely different results.
                             We help artists and creators go from ignored to trending.
                         </p>
                         <div className="service-hero-actions" style={{ justifyContent: 'center' }}>
-                            <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#ff4444', borderColor: '#ff4444' }}>
+                            <Link to="/contact" className="btn btn-primary btn-lg">
                                 Start Promoting
                             </Link>
                             <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
@@ -88,8 +88,8 @@ const VideoPromotions = () => {
 
             {/* Stats Section */}
             <section className="service-stats" style={{
-                borderColor: 'rgba(255, 0, 0, 0.2)',
-                background: 'rgba(255, 0, 0, 0.03)'
+                borderColor: 'rgba(196, 255, 60, 0.2)',
+                background: 'rgba(196, 255, 60, 0.03)'
             }}>
                 <div className="container">
                     <div className="service-stats-grid">
@@ -102,7 +102,7 @@ const VideoPromotions = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
                             >
-                                <span className="stat-number" style={{ color: '#ff4444' }}>{stat.number}</span>
+                                <span className="stat-number" style={{ color: '#c4ff3c' }}>{stat.number}</span>
                                 <span className="stat-label">{stat.label}</span>
                             </motion.div>
                         ))}
@@ -111,7 +111,7 @@ const VideoPromotions = () => {
             </section>
 
             {/* Features Grid */}
-            <section className="service-features section" style={{ background: 'rgba(255, 0, 0, 0.02)' }}>
+            <section className="service-features section" style={{ background: 'rgba(196, 255, 60, 0.02)' }}>
                 <div className="container">
                     <motion.div
                         className="section-header"
@@ -120,7 +120,7 @@ const VideoPromotions = () => {
                         viewport={{ once: true }}
                         style={{ textAlign: 'center', marginBottom: '3rem' }}
                     >
-                        <h2 className="section-title">Our <span style={{ color: '#ff4444' }}>Services</span></h2>
+                        <h2 className="section-title">Our <span style={{ color: '#c4ff3c' }}>Services</span></h2>
                         <p className="section-subtitle">Comprehensive video promotion solutions</p>
                     </motion.div>
                     <div className="features-grid">
@@ -132,7 +132,7 @@ const VideoPromotions = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                                style={{ borderColor: 'rgba(255, 0, 0, 0.15)' }}
+                                style={{ borderColor: 'rgba(196, 255, 60, 0.15)' }}
                             >
                                 <h3 className="feature-title">{feature.title}</h3>
                                 <p className="feature-description">{feature.description}</p>
@@ -150,12 +150,12 @@ const VideoPromotions = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        style={{ borderColor: 'rgba(255, 0, 0, 0.3)' }}
+                        style={{ borderColor: 'rgba(196, 255, 60, 0.3)' }}
                     >
                         <h2 className="cta-title">Ready to Get Millions of Views?</h2>
                         <p className="cta-subtitle">Let's make your next video a viral hit.</p>
                         <div className="cta-actions">
-                            <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#ff4444', borderColor: '#ff4444' }}>
+                            <Link to="/contact" className="btn btn-primary btn-lg">
                                 Start Your Campaign
                             </Link>
                         </div>

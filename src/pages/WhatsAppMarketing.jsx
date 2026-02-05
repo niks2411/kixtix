@@ -40,7 +40,7 @@ const WhatsAppMarketing = () => {
                 backgroundImage: 'url(/images/bg-whatsapp-marketing.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                opacity: 0.5,
+                opacity: 0.20,
                 pointerEvents: 'none',
                 zIndex: 0,
             }} />

@@ -72,9 +72,9 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
 
     // Determine color based on slider position
     const isViral = sliderPosition > 60;
-    const counterBg = isViral ? 'rgba(255,0,0,0.2)' : 'rgba(0,0,0,0.7)';
+    const counterBg = isViral ? 'rgba(196, 255, 60, 0.2)' : 'rgba(0,0,0,0.7)';
     const counterTextColor = isViral ? '#fff' : '#888';
-    const counterBorder = isViral ? '1px solid rgba(255,255,255,0.2)' : 'none';
+    const counterBorder = isViral ? '1px solid rgba(196, 255, 60, 0.3)' : 'none';
 
     // YouTube-style bottom bar component
     const YouTubeControls = ({ isAfter = false }) => (
@@ -98,7 +98,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                 <div style={{
                     width: `${progress}%`,
                     height: '100%',
-                    background: isAfter ? '#ff0000' : '#666',
+                    background: isAfter ? '#c4ff3c' : '#666',
                     borderRadius: '2px',
                     transition: 'width 0.1s',
                 }} />
@@ -325,7 +325,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        background: 'linear-gradient(to top, rgba(255,0,0,0.15) 0%, transparent 30%)',
+                        background: 'linear-gradient(to top, rgba(196, 255, 60, 0.15) 0%, transparent 30%)',
                     }} />
 
                     {/* After Stats Overlay */}
@@ -359,10 +359,10 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                                 position: 'absolute',
                                 top: '16px',
                                 right: '16px',
-                                background: '#ff0000',
+                                background: 'linear-gradient(135deg, #c4ff3c 0%, #87d300 100%)',
                                 padding: '6px 12px',
                                 borderRadius: '4px',
-                                color: '#fff',
+                                color: '#050A30',
                                 fontSize: '0.8rem',
                                 fontWeight: '600',
                                 display: 'flex',
@@ -370,7 +370,7 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                                 gap: '6px',
                             }}
                         >
-                            <span>▶</span> TRENDING #1
+                            <span>🔥</span> TRENDING #1
                         </motion.div>
 
                         {/* Verified Badge */}
@@ -457,47 +457,6 @@ const BeforeAfterTransform = ({ videoSrc = '/music1.mp4' }) => {
                         <span style={{ color: '#333', fontSize: '1.5rem', fontWeight: '300' }}>⟷</span>
                     </motion.div>
                 </div>
-            </motion.div>
-
-            {/* Bottom Stats */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    gap: '40px',
-                    marginTop: '40px',
-                    flexWrap: 'wrap',
-                }}
-            >
-                {[
-                    { label: 'Average Growth', value: '10,000%', icon: '📈' },
-                    { label: 'Time to Viral', value: '7 Days', icon: '⚡' },
-                    { label: 'Success Rate', value: '95%', icon: '🎯' },
-                ].map((stat, i) => (
-                    <motion.div
-                        key={stat.label}
-                        whileHover={{ scale: 1.05, y: -5 }}
-                        style={{
-                            textAlign: 'center',
-                            padding: '20px 30px',
-                            background: 'rgba(255,255,255,0.05)',
-                            borderRadius: '16px',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            backdropFilter: 'blur(10px)',
-                        }}
-                    >
-                        <div style={{ fontSize: '1.5rem', marginBottom: '8px' }}>{stat.icon}</div>
-                        <div style={{ color: '#c4ff3c', fontSize: '1.5rem', fontWeight: '700' }}>
-                            {stat.value}
-                        </div>
-                        <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem' }}>
-                            {stat.label}
-                        </div>
-                    </motion.div>
-                ))}
             </motion.div>
         </div>
     );
