@@ -1,48 +1,33 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import HorizontalScroll from '../components/ui/HorizontalScroll';
 import './ServicePage.css';
 
 const VideoPromotions = () => {
-    const features = [
+    const services = [
         {
-            icon: '📺',
             title: 'YouTube Promotions',
-            description: 'We manage your YouTube channels and increase the visibility of your content through SEO optimization, engaging content creation, and consistent uploads. We share your videos across platforms and build a community that suits you best.',
+            description: 'Content Promotion on YouTube & Social Media is a type of marketing that involves the creation and sharing of online materials that not only explicitly promote a brand but is intended to stimulate in its product or services. We manage your YouTube channels and increase the visibility of the content, manage Facebook and Instagram Pages. We use SEO (Search Engine Optimization) and Optimize Your YouTube Videos, Create Engaging Content and be consistent, share your videos on different platforms and build a community that suits you the best.'
         },
         {
-            icon: '🏷️',
             title: 'Brand Marketing',
-            description: 'Brand marketing is an approach to communications, sales, product, and service that grows brand equity. We help you build and enhance your brand name through strategic marketing and positioning.',
+            description: 'Brand marketing is an approach to communications, sales, product, and service that grows the asset of brand equity. Brand marketing is the theory and tactics to make a strong brand. The theory of brand marketing is spending on marketing is an investment in building a brand\'s value, and in-turn the company/individual value. We help you build and enhance your brand name.'
         },
         {
-            icon: '📢',
             title: 'Content Promotions',
-            description: 'Content Promotion involves the creation and sharing of online materials that explicitly promote a brand and stimulate interest in products or services. It helps attract and retain a clearly defined audience.',
+            description: 'Content Promotion is a type of marketing that involves the creation and sharing of online materials that not only explicitly promote a brand but is intended to stimulate in its product or services. It helps to attract and retain a clearly defined audience and ultimately to drive profitable customer act.'
         },
         {
-            icon: '👥',
             title: 'User Engagement',
-            description: 'User engagement measures whether users find value in your content. We track downloads, clicks, shares, and more. Highly engaged users are more profitable and become loyal fans.',
+            description: 'User engagement measures whether users find value in a product or service. Engagement can be measured by a variety or combination of activities such as downloads, clicks, shares, and more. Highly engaged users are generally more profitable, provided that their activities are tied to valuable outcomes such as purchases, signups, subscriptions, or clicks.'
         },
         {
-            icon: '🎬',
             title: 'Video Ads',
-            description: 'Video advertising encompasses online display ads with video content, shown before, during, and after video streams. Perfect for capturing attention and driving action.',
+            description: 'Video advertising encompasses online display advertisements that have video within them, but it is generally accepted that it refers to advertising that occurs before, during and/or after a video stream on the internet. This is one of the most effective ways to capture attention and drive action.'
         },
         {
-            icon: '🖼️',
             title: 'Display Ads',
-            description: 'Display advertising on websites, apps, and social media through banners and ad formats made of text, images, flash, video, and audio to deliver your message.',
-        },
-        {
-            icon: '📍',
-            title: 'Geo Targeting',
-            description: 'Geotargeting determines the location of website visitors and delivers different content based on their country, region, city, metro code, organization, or IP address.',
-        },
-        {
-            icon: '✅',
-            title: 'Real Users',
-            description: 'Real User Monitoring records all user interaction with your content. We ensure your promotions reach genuine, interested viewers who engage with your music.',
+            description: 'Display advertising is advertising on websites or apps or social media through banners or other ad formats made of text, images, flash, video, and audio. The main purpose of display advertising is to deliver general advertisements and brand messages to site visitors.'
         },
     ];
 
@@ -53,15 +38,36 @@ const VideoPromotions = () => {
         { number: '50+', label: 'Artists Grown' },
     ];
 
+    const process = [
+        { step: '01', title: 'Analysis', description: 'We analyze your current content, audience, and goals to create a tailored strategy.' },
+        { step: '02', title: 'Strategy', description: 'We develop a comprehensive promotion plan targeting your ideal audience.' },
+        { step: '03', title: 'Execution', description: 'We implement campaigns across YouTube, social media, and advertising networks.' },
+        { step: '04', title: 'Growth', description: 'We monitor, optimize, and scale your campaigns for maximum impact.' },
+    ];
+
     return (
-        <div className="service-page">
-            {/* Hero */}
+        <div className="service-page video-promotions-page">
+            {/* Background Image */}
+            <div className="service-bg-image" style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundImage: 'url(/images/bg-video-promotions.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                opacity: 0.5,
+                pointerEvents: 'none',
+                zIndex: 0,
+            }} />
+
+            {/* Hero Section */}
             <section className="service-hero">
                 <div className="service-hero-bg">
                     <div className="service-hero-gradient"></div>
                     <div className="service-hero-glow"></div>
                 </div>
-
                 <div className="container">
                     <motion.div
                         className="service-hero-content"
@@ -69,9 +75,16 @@ const VideoPromotions = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className="badge">⭐ Core Service</span>
+                        <motion.span
+                            className="badge"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2 }}
+                        >
+                            Core Service
+                        </motion.span>
                         <h1 className="service-hero-title">
-                            Video <span className="gradient-text">Promotions</span>
+                            Amplify Your <span className="gradient-text">Visual Story</span>
                         </h1>
                         <p className="service-hero-subtitle">
                             Content promotion on YouTube & Social Media is a type of marketing that involves
@@ -79,18 +92,14 @@ const VideoPromotions = () => {
                             a clearly defined audience to drive profitable customer action.
                         </p>
                         <div className="service-hero-actions">
-                            <Link to="/contact" className="btn btn-primary btn-lg">
-                                Start Growing Your Views
-                            </Link>
-                            <a href="tel:+917717278888" className="btn btn-secondary btn-lg">
-                                📞 Call Now
-                            </a>
+                            <Link to="/contact" className="btn btn-primary btn-lg">Start Growing Your Views</Link>
+                            <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            {/* Stats */}
+            {/* Stats Section */}
             <section className="service-stats">
                 <div className="container">
                     <div className="service-stats-grid">
@@ -111,43 +120,24 @@ const VideoPromotions = () => {
                 </div>
             </section>
 
-            {/* Features */}
-            <section className="service-features section">
-                <div className="container">
+            {/* Horizontal Scroll Section */}
+            <section className="service-horizontal-section">
+                <div className="container" style={{ paddingTop: '4rem' }}>
                     <motion.div
                         className="section-header"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        style={{ textAlign: 'center', marginBottom: '2rem' }}
                     >
-                        <h2 className="section-title">
-                            What We <span className="gradient-text">Offer</span>
-                        </h2>
-                        <p className="section-subtitle">
-                            Comprehensive video promotion services to maximize your reach and engagement
-                        </p>
+                        <h2 className="section-title">What We <span className="gradient-text">Offer</span></h2>
+                        <p className="section-subtitle">Scroll to explore our comprehensive video promotion services</p>
                     </motion.div>
-
-                    <div className="features-grid">
-                        {features.map((feature, index) => (
-                            <motion.div
-                                key={feature.title}
-                                className="feature-card"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.4, delay: index * 0.05 }}
-                            >
-                                <span className="feature-icon">{feature.icon}</span>
-                                <h3 className="feature-title">{feature.title}</h3>
-                                <p className="feature-description">{feature.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
                 </div>
+                <HorizontalScroll items={services} />
             </section>
 
-            {/* Process */}
+            {/* Process Section */}
             <section className="service-process section">
                 <div className="container">
                     <motion.div
@@ -155,19 +145,13 @@ const VideoPromotions = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        style={{ textAlign: 'center', marginBottom: '3rem' }}
                     >
-                        <h2 className="section-title">
-                            Our <span className="gradient-text">Process</span>
-                        </h2>
+                        <h2 className="section-title">Our <span className="gradient-text">Process</span></h2>
                     </motion.div>
 
                     <div className="process-grid">
-                        {[
-                            { step: '01', title: 'Analysis', description: 'We analyze your current content, audience, and goals to create a tailored strategy.' },
-                            { step: '02', title: 'Strategy', description: 'We develop a comprehensive promotion plan targeting your ideal audience.' },
-                            { step: '03', title: 'Execution', description: 'We implement campaigns across YouTube, social media, and advertising networks.' },
-                            { step: '04', title: 'Growth', description: 'We monitor, optimize, and scale your campaigns for maximum impact.' },
-                        ].map((item, index) => (
+                        {process.map((item, index) => (
                             <motion.div
                                 key={item.step}
                                 className="process-card"
@@ -185,7 +169,7 @@ const VideoPromotions = () => {
                 </div>
             </section>
 
-            {/* CTA */}
+            {/* CTA Section */}
             <section className="service-cta section">
                 <div className="container">
                     <motion.div

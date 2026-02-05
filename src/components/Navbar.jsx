@@ -7,6 +7,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [hoveredService, setHoveredService] = useState(0);
     const location = useLocation();
 
     useEffect(() => {
@@ -23,12 +24,38 @@ const Navbar = () => {
     }, [location]);
 
     const services = [
-        { name: 'Digital Marketing', path: '/services/digital-marketing', icon: '📊' },
-        { name: 'Music Distribution', path: '/services/music-distribution', icon: '🎵' },
-        { name: 'WhatsApp Marketing', path: '/services/whatsapp-marketing', icon: '💬' },
-        { name: 'Bulk SMS', path: '/services/bulk-sms', icon: '📱' },
-        { name: 'Voice Calls', path: '/services/voice-calls', icon: '📞' },
-        { name: 'App Marketing', path: '/services/app-marketing', icon: '📲' },
+        {
+            name: 'Digital Marketing',
+            path: '/services/digital-marketing',
+            icon: '📊',
+            subtitle: 'Core Expertise',
+            badge: '⭐',
+            image: '/images/digital-marketing.png'
+        },
+        {
+            name: 'Video Promotions',
+            path: '/services/video-promotions',
+            icon: '🎬',
+            subtitle: 'Core Expertise',
+            badge: '⭐',
+            image: '/images/video-promotions.png'
+        },
+        {
+            name: 'Content Aggregation',
+            path: '/services/content-aggregation',
+            icon: '📦',
+            subtitle: 'Distribution',
+            badge: '',
+            image: '/images/content-aggregation.png'
+        },
+        {
+            name: 'WhatsApp Marketing',
+            path: '/services/whatsapp-marketing',
+            icon: '💬',
+            subtitle: 'Direct Marketing',
+            badge: '',
+            image: '/images/whatsapp-marketing.png'
+        },
     ];
 
     return (
@@ -46,13 +73,11 @@ const Navbar = () => {
                         Home
                     </NavLink>
 
-
-
-                    {/* Services Dropdown */}
+                    {/* Services Mega Dropdown */}
                     <div
                         className="nav-dropdown"
                         onMouseEnter={() => setIsServicesOpen(true)}
-                        onMouseLeave={() => setIsServicesOpen(false)}
+                        onMouseLeave={() => { setIsServicesOpen(false); setHoveredService(0); }}
                     >
                         <button className="nav-link nav-dropdown-trigger">
                             Services
@@ -64,22 +89,44 @@ const Navbar = () => {
                         <AnimatePresence>
                             {isServicesOpen && (
                                 <motion.div
-                                    className="dropdown-menu"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    transition={{ duration: 0.2 }}
+                                    className="mega-dropdown"
+                                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                    transition={{ duration: 0.2, ease: 'easeOut' }}
                                 >
-                                    {services.map((service) => (
-                                        <NavLink
-                                            key={service.path}
-                                            to={service.path}
-                                            className={({ isActive }) => `dropdown-item ${isActive ? 'active' : ''}`}
-                                        >
-                                            <span className="dropdown-icon">{service.icon}</span>
-                                            {service.name}
-                                        </NavLink>
-                                    ))}
+                                    <div className="mega-dropdown-left">
+                                        {services.map((service, index) => (
+                                            <NavLink
+                                                key={service.path}
+                                                to={service.path}
+                                                className={({ isActive }) => `mega-dropdown-item ${isActive ? 'active' : ''} ${hoveredService === index ? 'hovered' : ''}`}
+                                                onMouseEnter={() => setHoveredService(index)}
+                                            >
+                                                <span className="mega-item-icon">{service.icon}</span>
+                                                <div className="mega-item-content">
+                                                    <span className="mega-item-name">{service.name}</span>
+                                                    <span className="mega-item-subtitle">
+                                                        {service.subtitle} {service.badge && <span className="mega-item-badge">{service.badge}</span>}
+                                                    </span>
+                                                </div>
+                                            </NavLink>
+                                        ))}
+                                    </div>
+                                    <div className="mega-dropdown-right">
+                                        <AnimatePresence mode="wait">
+                                            <motion.img
+                                                key={hoveredService}
+                                                src={services[hoveredService].image}
+                                                alt={services[hoveredService].name}
+                                                className="mega-dropdown-image"
+                                                initial={{ opacity: 0, scale: 1.05 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 0.95 }}
+                                                transition={{ duration: 0.2 }}
+                                            />
+                                        </AnimatePresence>
+                                    </div>
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -123,7 +170,6 @@ const Navbar = () => {
                     >
                         <div className="mobile-menu-content">
                             <NavLink to="/" className="mobile-link">Home</NavLink>
-
 
                             <div className="mobile-dropdown">
                                 <button

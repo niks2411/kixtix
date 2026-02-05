@@ -5,12 +5,10 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const services = [
-        { name: 'Video Promotions', path: '/video-promotions' },
         { name: 'Digital Marketing', path: '/services/digital-marketing' },
-        { name: 'Music Distribution', path: '/services/music-distribution' },
+        { name: 'Video Promotions', path: '/services/video-promotions' },
+        { name: 'Content Aggregation', path: '/services/content-aggregation' },
         { name: 'WhatsApp Marketing', path: '/services/whatsapp-marketing' },
-        { name: 'Bulk SMS', path: '/services/bulk-sms' },
-        { name: 'App Marketing', path: '/services/app-marketing' },
     ];
 
     const quickLinks = [

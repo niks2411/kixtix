@@ -1,52 +1,52 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import ChatBubbles from '../components/ui/ChatBubbles';
+import FloatingLogos from '../components/ui/FloatingLogos';
 import './ServicePage.css';
 
-const WhatsAppMarketing = () => {
-    const messages = [
-        {
-            title: '800M+ Active Users',
-            content: 'WhatsApp has over 800 million active users globally. We help you tap into an ever-increasing pool of prospective customers who prefer messaging over other forms of communication.'
-        },
-        {
-            title: 'Bulk Messaging',
-            content: 'Reach thousands of potential customers with a single campaign. Our bulk WhatsApp marketing service ensures your message reaches the right audience at the right time.'
-        },
-        {
-            title: 'Rich Media Support',
-            content: 'Send images, videos, documents, and audio files directly to your customers. Create engaging multimedia campaigns that capture attention and drive action.'
-        },
-        {
-            title: 'Two-Way Communication',
-            content: 'Unlike traditional SMS, WhatsApp enables real conversations with your customers. Build relationships and provide instant support through direct messaging.'
-        },
-        {
-            title: 'Cost Effective',
-            content: 'WhatsApp marketing is significantly more cost-effective than traditional advertising. Get better ROI with higher open rates and engagement compared to email or SMS.'
-        },
-        {
-            title: 'High Delivery Rate',
-            content: 'With 98% message delivery rate and 90%+ open rate, WhatsApp ensures your marketing messages actually reach and get read by your target audience.'
-        },
+const ContentAggregation = () => {
+    const platforms = [
+        { name: 'iTunes', bgColor: 'linear-gradient(135deg, #fb5c74 0%, #fc8b8b 100%)', image: '/images/1.png' },
+        { name: 'Gaana', bgColor: 'linear-gradient(135deg, #e72c30 0%, #ff6b6b 100%)', image: '/images/2.png' },
+        { name: 'Hungama', bgColor: 'linear-gradient(135deg, #00b894 0%, #55efc4 100%)', image: '/images/3.png' },
+        { name: 'JioSaavn', bgColor: 'linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%)', image: '/images/4.png' },
+        { name: 'Spotify', bgColor: 'linear-gradient(135deg, #1db954 0%, #1ed760 100%)', image: '/images/5.png' },
+        { name: 'Amazon Music', bgColor: 'linear-gradient(135deg, #ff9f43 0%, #feca57 100%)', image: '/images/7.png' },
+        { name: 'Apple Music', bgColor: 'linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%)', image: '/images/8.png' },
+        { name: 'Google Play', bgColor: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', image: '/images/9.png' },
+        { name: 'TikTok', bgColor: 'linear-gradient(135deg, #000000 0%, #333333 100%)', image: '/images/1.png' },
+        { name: 'Wynk Music', bgColor: 'linear-gradient(135deg, #000428 0%, #004e92 100%)', image: '/images/2.png' },
+        { name: 'Resso', bgColor: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', image: '/images/3.png' },
+        { name: 'YouTube Music', bgColor: 'linear-gradient(135deg, #ff0000 0%, #ff4444 100%)', image: '/images/4.png' },
     ];
 
     const features = [
-        { title: 'Targeted Campaigns', description: 'Reach specific demographics with personalized messages.' },
-        { title: 'Campaign Analytics', description: 'Track delivery, read rates, and engagement metrics.' },
-        { title: 'Automation', description: 'Set up automated responses and drip campaigns.' },
-        { title: 'Secure & Compliant', description: 'End-to-end encryption for all business communications.' },
+        {
+            title: 'Music Distribution',
+            description: 'We distribute your content across major platforms like Saavn, Gaana, iTunes, Google Play Music, Amazon, and more to maximize your reach and revenue.'
+        },
+        {
+            title: 'Content Curation',
+            description: 'We gather web content from different online sources for reuse and resale on various digital platforms, ensuring your message reaches the widest possible audience.'
+        },
+        {
+            title: 'Multi-Platform Strategy',
+            description: 'Digital Platform strategy is a blueprint for platform building in the enterprise. Our strategy delivers business value by ensuring your content is everywhere your audience is.'
+        },
+        {
+            title: 'Analytics & Insights',
+            description: 'Track your content performance across all platforms with comprehensive analytics and actionable insights. Know exactly where your audience is engaging.'
+        },
     ];
 
     const stats = [
-        { number: '98%', label: 'Delivery Rate' },
-        { number: '90%+', label: 'Open Rate' },
-        { number: '1M+', label: 'Messages Sent' },
-        { number: '500+', label: 'Happy Clients' },
+        { number: '50+', label: 'Platforms' },
+        { number: '1000+', label: 'Tracks Distributed' },
+        { number: '100M+', label: 'Streams Generated' },
+        { number: '24/7', label: 'Support' },
     ];
 
     return (
-        <div className="service-page whatsapp-marketing-page">
+        <div className="service-page content-aggregation-page">
             {/* Background Image */}
             <div className="service-bg-image" style={{
                 position: 'fixed',
@@ -54,7 +54,7 @@ const WhatsAppMarketing = () => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundImage: 'url(/images/bg-whatsapp-marketing.png)',
+                backgroundImage: 'url(/images/bg-content-aggregation.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 opacity: 0.5,
@@ -65,12 +65,8 @@ const WhatsAppMarketing = () => {
             {/* Hero Section */}
             <section className="service-hero">
                 <div className="service-hero-bg">
-                    <div className="service-hero-gradient" style={{
-                        background: 'radial-gradient(ellipse at 50% 0%, rgba(37, 211, 102, 0.12) 0%, transparent 50%)'
-                    }}></div>
-                    <div className="service-hero-glow" style={{
-                        background: 'radial-gradient(ellipse, rgba(37, 211, 102, 0.15) 0%, transparent 60%)'
-                    }}></div>
+                    <div className="service-hero-gradient"></div>
+                    <div className="service-hero-glow"></div>
                 </div>
                 <div className="container">
                     <motion.div
@@ -84,21 +80,18 @@ const WhatsAppMarketing = () => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.2 }}
-                            style={{ background: 'rgba(37, 211, 102, 0.15)', color: '#25D366' }}
                         >
-                            WhatsApp Marketing
+                            Content Aggregation
                         </motion.span>
                         <h1 className="service-hero-title">
-                            Direct Customer <span style={{ color: '#25D366' }}>Engagement</span>
+                            Distribute Your Music <span className="gradient-text">Everywhere</span>
                         </h1>
                         <p className="service-hero-subtitle">
-                            Capitalize on WhatsApp's 800+ million active users to reach prospective customers directly.
-                            Build meaningful relationships through personalized messaging that drives conversions and loyalty.
+                            A Content Aggregator gathers web content and applications from different online sources for reuse and resale.
+                            We distribute your content across major platforms like Saavn, Gaana, iTunes, Google Play Music, Amazon, and more.
                         </p>
                         <div className="service-hero-actions">
-                            <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#25D366', borderColor: '#25D366' }}>
-                                Start WhatsApp Campaign
-                            </Link>
+                            <Link to="/contact" className="btn btn-primary btn-lg">Distribute Your Content</Link>
                             <a href="tel:+917717278888" className="btn btn-secondary btn-lg">Call Now</a>
                         </div>
                     </motion.div>
@@ -106,10 +99,7 @@ const WhatsAppMarketing = () => {
             </section>
 
             {/* Stats Section */}
-            <section className="service-stats" style={{
-                borderColor: 'rgba(37, 211, 102, 0.2)',
-                background: 'rgba(37, 211, 102, 0.03)'
-            }}>
+            <section className="service-stats">
                 <div className="container">
                     <div className="service-stats-grid">
                         {stats.map((stat, index) => (
@@ -121,7 +111,7 @@ const WhatsAppMarketing = () => {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
                             >
-                                <span className="stat-number" style={{ color: '#25D366' }}>{stat.number}</span>
+                                <span className="stat-number">{stat.number}</span>
                                 <span className="stat-label">{stat.label}</span>
                             </motion.div>
                         ))}
@@ -129,8 +119,8 @@ const WhatsAppMarketing = () => {
                 </div>
             </section>
 
-            {/* Chat Bubbles Section */}
-            <section className="section">
+            {/* Floating Platforms Section */}
+            <section className="section" style={{ background: 'var(--bg-secondary)' }}>
                 <div className="container">
                     <motion.div
                         className="section-header"
@@ -139,15 +129,15 @@ const WhatsAppMarketing = () => {
                         viewport={{ once: true }}
                         style={{ textAlign: 'center', marginBottom: '2rem' }}
                     >
-                        <h2 className="section-title">Why <span style={{ color: '#25D366' }}>WhatsApp</span> Marketing?</h2>
-                        <p className="section-subtitle">Discover the power of direct messaging for your business</p>
+                        <h2 className="section-title">Platforms We <span className="gradient-text">Support</span></h2>
+                        <p className="section-subtitle">Your music, available on all major streaming platforms worldwide</p>
                     </motion.div>
                 </div>
-                <ChatBubbles messages={messages} />
+                <FloatingLogos platforms={platforms} />
             </section>
 
-            {/* Features Grid */}
-            <section className="service-features section" style={{ background: 'rgba(37, 211, 102, 0.02)' }}>
+            {/* Features Section */}
+            <section className="service-features section">
                 <div className="container">
                     <motion.div
                         className="section-header"
@@ -156,7 +146,8 @@ const WhatsAppMarketing = () => {
                         viewport={{ once: true }}
                         style={{ textAlign: 'center', marginBottom: '3rem' }}
                     >
-                        <h2 className="section-title">Our <span style={{ color: '#25D366' }}>Capabilities</span></h2>
+                        <h2 className="section-title">Our <span className="gradient-text">Services</span></h2>
+                        <p className="section-subtitle">Comprehensive content aggregation solutions for maximum distribution</p>
                     </motion.div>
                     <div className="features-grid">
                         {features.map((feature, index) => (
@@ -167,7 +158,6 @@ const WhatsAppMarketing = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                                style={{ borderColor: 'rgba(37, 211, 102, 0.15)' }}
                             >
                                 <h3 className="feature-title">{feature.title}</h3>
                                 <p className="feature-description">{feature.description}</p>
@@ -185,14 +175,11 @@ const WhatsAppMarketing = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        style={{ borderColor: 'rgba(37, 211, 102, 0.3)' }}
                     >
-                        <h2 className="cta-title">Ready to Connect with 800M+ Users?</h2>
-                        <p className="cta-subtitle">Start your WhatsApp marketing campaign today and see immediate results.</p>
+                        <h2 className="cta-title">Ready to Maximize Your Content Reach?</h2>
+                        <p className="cta-subtitle">Let us help you distribute your content across all major platforms.</p>
                         <div className="cta-actions">
-                            <Link to="/contact" className="btn btn-primary btn-lg" style={{ background: '#25D366', borderColor: '#25D366' }}>
-                                Get Started Now
-                            </Link>
+                            <Link to="/contact" className="btn btn-primary btn-lg">Contact Us Today</Link>
                         </div>
                     </motion.div>
                 </div>
@@ -201,4 +188,4 @@ const WhatsAppMarketing = () => {
     );
 };
 
-export default WhatsAppMarketing;
+export default ContentAggregation;
