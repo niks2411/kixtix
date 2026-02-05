@@ -62,7 +62,7 @@ export const AnimatedTestimonials = ({
         }
         .author-name {
           font-size: 2.5rem;
-          font-weight: 700;
+          font-weight: 300;
           margin: 0;
           color: #fff;
         }

@@ -284,7 +284,7 @@
 
 .mega-item-name {
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 300;
     color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.01em;
     transition: color 0.25s ease;

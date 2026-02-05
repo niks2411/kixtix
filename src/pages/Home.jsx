@@ -220,17 +220,6 @@ const Home = () => {
                         className="hero-text-side"
                         style={{ opacity: textOpacity, y: textY }}
                     >
-                        <div className="hero-badge">
-                            <div className="equalizer">
-                                <div className="eq-bar"></div>
-                                <div className="eq-bar"></div>
-                                <div className="eq-bar"></div>
-                                <div className="eq-bar"></div>
-                                <div className="eq-bar"></div>
-                            </div>
-                            <span>Music Promotion Agency</span>
-                        </div>
-
                         <div className="hero-main-title">
                             <TextRoll className="hero-title-line">Your Music</TextRoll>
                             <TextRoll center className="hero-title-line accent">Deserves</TextRoll>

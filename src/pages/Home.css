@@ -72,7 +72,7 @@
 
 .hero-badge span {
     font-size: 0.7rem;
-    font-weight: 400;
+    font-weight: 300;
     color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -135,9 +135,9 @@
 }
 
 .hero-main-title {
-    font-family: 'Outfit', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 300 !important;
+    font-weight: 200 !important;
     line-height: 1.1;
     color: #fff;
     display: flex;
@@ -150,7 +150,7 @@
 .hero-title-line {
     display: block;
     cursor: pointer;
-    font-weight: 300 !important;
+    font-weight: 200 !important;
 }
 
 .hero-main-title .accent {
