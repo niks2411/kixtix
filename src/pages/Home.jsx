@@ -19,6 +19,7 @@ const Home = () => {
     const showcaseVideos = [
         { id: '/music1.mp4', title: 'Our Latest Work' },
         { id: '/music2.mp4', title: 'Featured Release' },
+        { id: '/music3.mp4', title: 'Music Video' },
     ];
 
     const nextVideo = (e) => {
