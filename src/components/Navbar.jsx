@@ -62,9 +62,19 @@ const Navbar = () => {
         <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
             <div className="navbar-container">
                 {/* Logo */}
+                {/* Logo */}
                 <Link to="/" className="navbar-logo">
-                    <span className="logo-text">KIXTIX</span>
-                    <span className="logo-accent">MEDIA</span>
+                    <div className="logo-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#C4FF3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M10 8L16 12L10 16V8Z" fill="#C4FF3C" stroke="#C4FF3C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M22 12H23M12 2V1M12 22V23M2 12H1" stroke="#C4FF3C" strokeWidth="1.5" strokeLinecap="round" strokeAlpha="0.5" />
+                        </svg>
+                    </div>
+                    <div className="logo-text-group">
+                        <span className="logo-text-main">KIXTIX</span>
+                        <span className="logo-text-sub">MEDIA</span>
+                    </div>
                 </Link>
 
                 {/* Desktop Navigation */}
