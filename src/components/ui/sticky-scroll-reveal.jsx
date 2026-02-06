@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
+import "./StickyScroll.css";
 
 export const StickyScroll = ({ content }) => {
     const [activeCard, setActiveCard] = useState(0);
@@ -39,40 +40,22 @@ export const StickyScroll = ({ content }) => {
     }, [activeCard]);
 
     return (
-        <div
-            ref={containerRef}
-            style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: '60px',
-                position: 'relative',
-                padding: '40px 0',
-            }}
-        >
+        <div className="sticky-scroll-container" ref={containerRef}>
             {/* Left content - scrolls normally */}
-            <div style={{ flex: 1, maxWidth: '550px' }}>
+            <div className="sticky-scroll-content">
                 {content.map((item, index) => (
                     <motion.div
                         key={item.title + index}
+                        className="sticky-scroll-item"
                         animate={{ opacity: activeCard === index ? 1 : 0.3 }}
                         style={{
                             marginBottom: index === content.length - 1 ? '0' : '150px',
-                            transition: 'opacity 0.3s ease',
                         }}
                     >
-                        <h2 style={{
-                            fontSize: '32px',
-                            fontWeight: 'bold',
-                            color: '#c4ff3c',
-                            marginBottom: '20px',
-                        }}>
+                        <h2 className="sticky-scroll-title">
                             {item.title}
                         </h2>
-                        <p style={{
-                            fontSize: '17px',
-                            color: '#a1a1aa',
-                            lineHeight: '1.8',
-                        }}>
+                        <p className="sticky-scroll-description">
                             {item.description}
                         </p>
                     </motion.div>
@@ -80,29 +63,11 @@ export const StickyScroll = ({ content }) => {
             </div>
 
             {/* Right sticky card - stays fixed while scrolling */}
-            <div style={{
-                position: 'sticky',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                width: '400px',
-                height: '350px',
-                flexShrink: 0,
-                alignSelf: 'flex-start',
-                marginTop: '100px',
-            }}>
+            <div className="sticky-scroll-visual">
                 <motion.div
+                    className="sticky-scroll-card"
                     animate={{ background: backgroundGradient }}
                     transition={{ duration: 0.5 }}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: '16px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
-                        overflow: 'hidden',
-                    }}
                 >
                     {content[activeCard].content ?? null}
                 </motion.div>

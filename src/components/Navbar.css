@@ -487,12 +487,73 @@
 /* Responsive */
 @media (max-width: 1024px) {
 
+    .navbar {
+        top: 20px;
+        /* Restore top spacing */
+        left: 50%;
+        width: calc(100% - 32px);
+        /* Floating width */
+        max-width: 100%;
+        transform: translateX(-50%);
+        /* Center it */
+        border-radius: 16px;
+        /* Restore rounded corners */
+        border: 1px solid rgba(196, 255, 60, 0.1);
+        background: rgba(5, 10, 48, 0.95);
+    }
+
+    .navbar::before {
+        display: block;
+        /* Restore top border-like effect if desired, or keep hidden. Keeping hidden for cleaner look on mobile usually. */
+        display: none;
+    }
+
     .navbar-links,
     .navbar-cta {
         display: none;
     }
 
     .mobile-menu-btn {
-        display: flex;
+        display: flex !important;
+        z-index: 1002;
+        position: relative;
+        margin-left: auto;
+        margin-right: 12px;
+        /* Move slightly left from edge */
+        border: none;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+    }
+
+    .mobile-menu-btn span {
+        background-color: var(--text-primary) !important;
+        height: 2px;
+        width: 100%;
+        display: block;
+        border-radius: var(--radius-full);
+    }
+
+    .mobile-menu {
+        position: fixed;
+        /* Change from absolute to fixed */
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Full screen height */
+        height: calc(100vh - var(--navbar-height)) !important;
+        /* Force full height */
+        background: var(--bg-primary);
+        overflow-y: auto;
+        padding-bottom: 40px;
+        z-index: 1001;
+    }
+
+    .mobile-menu-content {
+        padding: 20px;
+        min-height: 100%;
     }
 }

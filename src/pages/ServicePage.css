@@ -235,6 +235,10 @@
 }
 
 @media (max-width: 640px) {
+    .service-hero {
+        padding: 100px 0 60px;
+    }
+
     .service-hero-title {
         font-size: var(--text-5xl);
     }
