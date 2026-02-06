@@ -251,9 +251,9 @@ const PhoneMockup = ({ messages }) => {
             }}>
                 {[
                     { text: '800M+ Users', x: -180, y: -150, delay: 0 },
-                    { text: '98% Delivery', x: 160, y: -100, delay: 0.3 },
-                    { text: 'Bulk Messaging', x: -150, y: 100, delay: 0.6 },
-                    { text: 'High Open Rate', x: 180, y: 150, delay: 0.9 },
+                    { text: '98% Delivery', x: 160, y: -100, delay: 1.5 },
+                    { text: 'Bulk Messaging', x: -150, y: 100, delay: 2.5 },
+                    { text: 'High Open Rate', x: 180, y: 150, delay: 4 },
                 ].map((bubble, index) => (
                     <motion.div
                         key={index}
